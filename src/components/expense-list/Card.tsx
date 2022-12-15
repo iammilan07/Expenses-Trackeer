@@ -10,7 +10,8 @@ const Card = (props: any) => {
 
 
 
-  const time = moment(expense.createdAt).fromNow();
+  // const time = moment(expense.createdAt).fromNow();
+  const time = moment().format('MMMM Do YYYY, h:mm:ss a')
   const dispatch = useDispatch();
   const handleDelete = () => {
     notifySuccess();
