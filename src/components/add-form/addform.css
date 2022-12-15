@@ -1,0 +1,70 @@
+.add-from{
+    background: rgb(0, 162, 255);
+    box-shadow:  20px 20px 60px #13b3d2, -20px -20px 60px #1bb1df;
+    margin: 6px 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 60vh;
+}
+.form-item{
+    margin: 12 0px;
+    width: 70%;
+    padding: 4px;
+    border-radius: 6px;
+    background-color: white;
+}
+
+.form-item label{
+    background-color: lightgray;
+    padding: 2px 12px ;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.form-item input{
+    font-size: 16px;
+    border: none;
+    outline: none;
+    width: 70%;
+}
+
+.category-container-parent{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
+.category{
+    position: relative;
+    width: 40%;
+}
+.category-dropdown{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    margin: 12px 0px;
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.category-container{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    flex-direction: column;
+    background-color: transparent;
+
+}
+.category-item{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0px;
+    cursor: pointer;
+}
+.form-add-button{
+    display: flex;
+    justify-content: flex-end;
+}

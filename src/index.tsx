@@ -1,19 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import App from "./App";
+import "./App.css";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header";
+import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <ChakraProvider>
+    <Provider store={store}>
+      <Box
+        alignItems="center"
+        background="#09b0ed"
+        height="700px"
+        width="70%"
+        marginLeft="250px"
+      >
+        <Header />
+        <App />
+        <Footer />
+      </Box>
+    </Provider>
+  </ChakraProvider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
