@@ -21,33 +21,27 @@ export const expenseSlice = createSlice({
   initialState,
   reducers: {
     addExpense: (state, action) => {
-
       const newState = [...state.expense, action.payload];
       localStorage.setItem(storageKey, JSON.stringify(newState));
-
       state.expense = newState
-
     },
 
 
     deleteExpense: (state: any, action: any) => {
-      const { createdAt } = action.payload
+      const { title } = action.payload
       const newStatee = state.expense.filter(
-        (expense: any) => expense.createdAt !== createdAt);
+        (expense: any) => expense.title !== title);
       localStorage.setItem(storageKey, JSON.stringify(newStatee));
       state.expense = newStatee;
+    },
 
 
 
-      // const { data } = action;
-      // const updatedList = state.expense.filter(
-      //   (item: any) => item.createdAt !== data.createdAt
-      // );
-      // localStorage.setItem("expense-list", JSON.stringify(updatedList));
-      // return {
-      //   ...state,
-      //   expenseList: updatedList,
-      // };
+    editExpense: (state: any, action: any) => {
+      let { expense } = state;
+      state.expense = expense.map((item: any) =>
+        item.id === action.payload.id ? action.payload : item
+      )
     },
 
 
@@ -64,38 +58,3 @@ export const expenseSlice = createSlice({
 export const { addExpense, deleteExpense, searchExpense } =
   expenseSlice.actions;
 export default expenseSlice.reducer;
-
-// export const expenseReducer = (state = initialState, action: any) => {
-//   switch (action.type) {
-//     case ADD_EXPENSE: {
-//       localStorage.setItem(
-//         "expense-list",
-//         JSON.stringify([...state.expenseList, action.data])
-//       );
-//       return {
-//         ...state,
-//         expenseList: [...state.expenseList, action.data],
-//       };
-//     }
-//     case DELETE_EXPENSE: {
-//       const { data } = action;
-//       const updatedList = state.expenseList.filter(
-//         (item) => item.crestedAt !== data.crestedAt
-//       );
-//       localStorage.setItem("expense-list", JSON.stringify(updatedList));
-//       return {
-//         ...state,
-//         expenseList: updatedList,
-//       };
-//     }
-//     case SEARCH_EXPENSE: {
-//       const { query } = action;
-//       return {
-//         ...state,
-//         query,
-//       };
-//     }
-//     default:
-//       return state;
-//   }
-// };

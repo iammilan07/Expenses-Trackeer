@@ -1,17 +1,22 @@
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addExpense } from "../../redux/index/index"
-import { AiOutlineHome } from "react-icons/ai"
+import { useSelector } from "react-redux";
+import { AiOutlineHome } from "react-icons/ai";
+import { selectExpenseList } from "../../redux/index/index";
+import DatePicker from "react-datepicker";
+import { useState } from "react";
+import 'react-datepicker/dist/react-datepicker.css'
 
-const Details = (data: any) => {
-    const dispatch = useDispatch();
-    const item = () => {
+const Details = () => {
 
-        dispatch(addExpense(data))
-    }
+    const list = useSelector(selectExpenseList);
+
+
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
+    // let mapped = {}
     return (
-        <div>
+        <Box>
             {/* <pre>{JSON.stringify(item, null, 2)}</pre> */}
             <Link to="/">
                 <Button
@@ -31,8 +36,25 @@ const Details = (data: any) => {
                 </Button>
             </Link>
             <Text textAlign='center' paddingTop='25px'>Expenses Details</Text>
+            <Box textAlign='center' paddingTop='20px'>
+                <DatePicker selected={selectedDate} onChange={(date: Date) => setSelectedDate(date)} dateFormat="yyyy/MM/dd" maxDate={new Date()} placeholderText="Select Date" />
+            </Box>
 
-        </div>
+            {list.map((expense: any) => {
+                console.log(expense)
+
+            })}
+
+
+            {/* {list.map((expense: any) => {
+                if (!mapped[expense.createdAt]) {
+                    mapped[expense.createdAt] = [expense];
+                } else {
+                    mapped[expense.createdAt].push(expense);
+                })
+            }) */}
+
+        </Box>
     )
 }
 

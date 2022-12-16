@@ -7,9 +7,9 @@ import {
 } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
 import { BiCommentDetail } from "react-icons/bi"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchExpense } from "../../redux/index/index";
+import { searchExpense, selectExpenseList } from "../../redux/index/index";
 import "./topfold.css";
 
 
@@ -20,6 +20,8 @@ const Topfold = () => {
     setQuery(e.target.value);
     dispatch(searchExpense(e.target.value));
   };
+
+
   return (
     <Box
       className="topfold"
@@ -139,6 +141,7 @@ const Topfold = () => {
           </Link>
         </Box>
       )}
+
     </Box>
   );
 };

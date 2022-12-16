@@ -84,6 +84,7 @@ const AddForm = () => {
           />
         </HStack>
       </Box>
+
       <Box className="category-container-parent">
         <Box className="category" >
           <Box

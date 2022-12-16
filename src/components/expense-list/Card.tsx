@@ -10,8 +10,8 @@ const Card = (props: any) => {
 
 
 
-  // const time = moment(expense.createdAt).fromNow();
-  const time = moment().format('MMMM Do YYYY, h:mm:ss a')
+  const time = moment(expense.createdAt).fromNow();
+
   const dispatch = useDispatch();
   const handleDelete = () => {
     notifySuccess();
@@ -63,10 +63,15 @@ const Card = (props: any) => {
             RS {expense.amount}
           </Text>
         </Box>
+
         <Text cursor="pointer" className="delete-icon" fontSize="16px" >
           <AiOutlineDelete onClick={handleDelete} />
         </Text>
       </Box>
+
+
+
+
 
     </Box>
 

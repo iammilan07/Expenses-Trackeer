@@ -13,6 +13,10 @@ export const deleteExpense = (item: any): any => (dispatch: any) => {
 
 };
 
+export const editExpense = (expense: any): any => (dispatch: any) => {
+  dispatch(fromSlice.searchExpense(expense))
+}
+
 export const searchExpense = (query: any): any => (dispatch: any) => {
   dispatch(fromSlice.searchExpense(query))
 
