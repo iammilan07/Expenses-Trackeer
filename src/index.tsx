@@ -16,7 +16,7 @@ root.render(
     <Provider store={store}>
       <Box
         alignItems="center"
-        background="#09b0ed"
+        // background="#09b0ed"
         height="700px"
         width="70%"
         marginLeft="250px"

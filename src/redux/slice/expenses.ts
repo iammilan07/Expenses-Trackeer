@@ -37,6 +37,9 @@ export const expenseSlice = createSlice({
 
 
 
+
+
+
     editExpense: (state: any, action: any) => {
       let { expense } = state;
       state.expense = expense.map((item: any) =>

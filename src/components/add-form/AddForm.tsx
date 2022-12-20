@@ -67,6 +67,7 @@ const AddForm = () => {
 
       <HStack className="form-item">
         <label>Title</label>
+
         <Input
           placeholder="Expenditure Name"
           value={title}

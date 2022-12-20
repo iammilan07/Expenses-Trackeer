@@ -1,11 +1,8 @@
-import { Box, Image, Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 import {
-  selectExpenseList,
-  selectExpenseQuery,
   selectMappedList,
 } from "../../redux/index/index";
 
@@ -15,11 +12,11 @@ const Expenselist = () => {
 
   const list = useSelector(selectMappedList);
 
-  const query = useSelector(selectExpenseQuery);
 
   const notifySuccess = () => toast.success("Deleted Successfully");
 
   return <ul>
+
     {list && Object.keys(list).map((key: any) => {
       return <li key={key}>
         <p>{key}</p>
