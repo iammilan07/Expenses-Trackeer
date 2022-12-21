@@ -7,9 +7,9 @@ import {
 } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
 import { BiCommentDetail } from "react-icons/bi"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchExpense, selectExpenseList } from "../../redux/index/index";
+import { searchExpense } from "../../redux/index/index";
 import "./topfold.css";
 
 

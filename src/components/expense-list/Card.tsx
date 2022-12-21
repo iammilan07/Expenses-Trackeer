@@ -10,7 +10,7 @@ const Card = (props: any) => {
 
 
 
-  const time = moment(expense.createdAt).fromNow();
+  const time = moment(expense?.createdAt).fromNow();
 
   const dispatch = useDispatch();
   const handleDelete = () => {
@@ -45,7 +45,7 @@ const Card = (props: any) => {
         marginLeft="12px"
       >
         <Text className="card-title" fontSize="20px" >
-          {expense.title}
+          {expense?.title}
         </Text>
         < Text className="card-time" color="gray" fontSize="12px" >
           {time}
@@ -60,7 +60,7 @@ const Card = (props: any) => {
       >
         <Box>
           <Text className="card-amount" fontSize="20px" fontWeight="500" >
-            RS {expense.amount}
+            RS {expense?.amount}
           </Text>
         </Box>
 

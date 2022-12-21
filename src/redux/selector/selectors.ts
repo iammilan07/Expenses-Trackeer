@@ -26,6 +26,7 @@ export const selectMappedList = (state: any) => {
     })
 
     return x
+
 };
 
 
@@ -54,33 +55,28 @@ export const selectpiechart = (state: any) => {
 };
 
 
-
-// export const selectpiechart = (state: any) => {
-
-//     const data: any = []
-
-//     Object.entries(selectMappedList).forEach(entry => {
-
-//         const [key, value]: any = entry;
-
-//         var total_amount_ofaday = 0
-//         value.forEach((element: any) => {
-//             total_amount_ofaday += element['amount']
-//         });
-
-//         data.push({ "name": key, "value": total_amount_ofaday })
-//     })
-//     // console.log("returnnnnnn", data)
-//     return data
-// }
+export const selectCalendar = (state: any) => {
 
 
-// export const selectPrice = (state: any) => {
-//     const price = state.expenseList.expense.map((item: any) => {
-//         return {
+
+    const dataa: any = []
+
+    Object.entries(selectMappedList(state)).forEach(entry => {
+
+        const [key, value]: any = entry;
+
+        var total_amount_ofaday = 0
+        value.forEach((element: any) => {
+            total_amount_ofaday += element['amount']
+        });
+
+        dataa.push({ "name": key, "value": total_amount_ofaday })
+    })
+
+    return dataa
 
 
-//         }
-//     })
-//     console.log(selectPrice)
-// }
+};
+
+
+

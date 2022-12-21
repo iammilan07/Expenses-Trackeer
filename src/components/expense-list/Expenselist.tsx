@@ -12,7 +12,6 @@ const Expenselist = () => {
 
   const list = useSelector(selectMappedList);
 
-
   const notifySuccess = () => toast.success("Deleted Successfully");
 
   return <ul>
@@ -25,11 +24,7 @@ const Expenselist = () => {
         })}
       </li>
     }
-    )
-
-    }
+    )}
   </ul>
-
 };
-
 export default Expenselist;

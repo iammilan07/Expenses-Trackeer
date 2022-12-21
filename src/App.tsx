@@ -4,6 +4,8 @@ import Home from "./pages/home/Home";
 import Addexpense from "./pages/add-expense/Addexpense";
 import Details from "./pages/details/Details";
 
+
+
 function App() {
   const router = createBrowserRouter([
     {

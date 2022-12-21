@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from '@chakra-ui/react'
+import { HStack, Text } from '@chakra-ui/react'
 import { useSelector } from 'react-redux';
 import { selectExpenseList } from '../../redux/index';
 
@@ -13,7 +13,6 @@ const TotalExpense = () => {
         } else {
             decc = decc - Number(expense.amount);
         }
-        return console.log("hist", expense.Expense, Number(expense.amount), incc, decc);
     });
 
     return (

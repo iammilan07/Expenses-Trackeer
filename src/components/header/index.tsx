@@ -2,30 +2,9 @@ import { AiOutlineCreditCard } from "react-icons/ai";
 import { AiFillGithub } from "react-icons/ai";
 import "./header.css";
 import { Box, Text, Link } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import { selectExpenseList } from "../../redux/index";
+
 
 const Header = () => {
-
-
-
-  // {
-  //   list.map((expense: any) => {
-  //     console.log(expense)
-  //     return
-  //     const totall= ()=>{
-  //       setTotal({expense.amount})
-  //       }
-  //   })
-  // }
-  // const price = list.expense;
-
-  // Object.keys(price)
-  // let sum = 0;
-  // Object.keys(price).forEach((price, index) => {
-  //   return (sum = sum + price[prices].price.length)
-  // })
-
 
 
 
@@ -56,20 +35,6 @@ const Header = () => {
           </Box>
         </Box>
       </Box>
-      {/* // const price = list.expense;
-
-// Object.keys(price)
-// let sum = 0;
-// Object.keys(price).forEach((price, index) => {
-//   return (sum = sum + price[prices].price.length)
-// }) */}
-      {/* {
-        list.map((expense: any) => {
-          const total = expense.amount
-          return <Text>Total Expenses={total}</Text>
-        })
-      } */}
-
     </Box>
   );
 };

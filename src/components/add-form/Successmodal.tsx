@@ -3,7 +3,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import Modal from "react-modal"
 import { Link } from "react-router-dom";
 const Successmodal = (props: any) => {
-  const { modalOpen, setModalOpen } = props;
+  const { modalOpen } = props;
   const customStyles = {
     content: {
       top: "50%",

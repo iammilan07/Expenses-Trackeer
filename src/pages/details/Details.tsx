@@ -1,19 +1,27 @@
+import React from 'react'
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineHome } from "react-icons/ai";
 import { selectExpenseList, selectMappedList, selectpiechart } from "../../redux/index/index";
 import { PieChart, Pie, Cell, Legend } from "recharts";
+import { Calendar } from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { useState } from "react";
+import Expenselist from '../../components/expense-list/Expenselist';
+import Newexpenselist from '../../components/expense-list/Newexpenselist';
+
 
 const Details = () => {
-
+    const [date, setDate] = useState(new Date())
     const list = useSelector(selectExpenseList);
-
-
-    const sdata = useSelector(selectMappedList);
-
     const data = useSelector(selectpiechart)
+    const sdata = useSelector(selectMappedList)
 
+    // React.useEffect(() => {
+    //     // dispatch(addExpense(expense))
+    //     dispatch(addExpense(expense))
+    // }, [dispatch])
 
 
 
@@ -50,6 +58,7 @@ const Details = () => {
     return (
         <Box>
             {/* <pre>{JSON.stringify(sdata, null, 2)}</pre> */}
+
             <Link to="/">
                 <Button
                     border="1px solid black"
@@ -70,6 +79,7 @@ const Details = () => {
             <Text textAlign='center' paddingTop='25px'>Expenses Details</Text>
 
             <Box alignItems='center' justifyContent='center' display='flex'>
+
                 <PieChart width={400} height={400}>
 
                     <Legend layout="vertical" verticalAlign="top" align="center" />
@@ -92,12 +102,25 @@ const Details = () => {
                         ))}
                     </Pie>
                 </PieChart>
+
+
+
+            </Box>
+            <Box display='flex'>
+                <Box className="app">
+                    <Text className="header">React Calendar</Text>
+                    <Box className="calendar-container">
+                        <Calendar onChange={setDate} value={date} />
+                    </Box>
+                    <Box className="text-center">
+                        Selected date: {date.toLocaleDateString()}
+                    </Box>
+                </Box>
+
             </Box>
 
-
-
-
-
+            {/* <pre>{JSON.stringify(sdata, null, 2)}</pre> */}
+            <Newexpenselist date={date.toLocaleDateString()} />
 
         </Box>
     )
