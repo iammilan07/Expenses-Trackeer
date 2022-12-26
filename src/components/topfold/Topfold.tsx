@@ -41,13 +41,13 @@ const Topfold = () => {
             className="searchbar"
             display="flex"
             alignItems="center"
-            width="50%"
+            width="250px"
             backgroundColor="white"
             borderRadius="12px"
           >
             <HStack
               fontSize="28px"
-              display="flex"
+              justifyContent='space-between'
               alignItems="center"
               marginLeft="6px"
               outline="none"
@@ -68,45 +68,67 @@ const Topfold = () => {
               ></Input>
             </HStack>
           </Box>
+          <HStack>
+            <Link to="details">
+              <Box
 
-          <Link to="details">
-            <Box
-              background='lightgrey'
-              className="add-button"
-              border="1px solid black"
-              alignItems="center"
-              borderRadius="6px"
-              height="30px"
-              fontSize="15px"
-              padding="2px"
-              cursor="pointer"
-            >
-              <HStack>
-                <BiCommentDetail />
-                <Text>Details</Text>
-              </HStack>
-            </Box>
-          </Link>
+                background='lightgrey'
+                className="add-button"
+                border="1px solid black"
+                alignItems="center"
+                borderRadius="6px"
+                height="30px"
+                fontSize="15px"
+                padding="2px"
+                cursor="pointer"
+              >
+                <HStack>
+                  <BiCommentDetail />
+                  <Text>Details</Text>
+                </HStack>
+              </Box>
+            </Link>
 
 
-          <Link to="add-expense">
-            <Box
-              background='lightgrey'
-              className="add-button"
-              border="1px solid black"
-              alignItems="center"
-              borderRadius="6px"
-              height="30px"
-              fontSize="15px"
-              padding="2px"
-              cursor="pointer"
-            >
-              <HStack>
-                <AiOutlinePlusCircle />
-                <Text>Add</Text>
-              </HStack>
-            </Box>
-          </Link>
+            <Link to="add-expense">
+              <Box
+
+                background='lightgrey'
+                className="add-button"
+                border="1px solid black"
+                alignItems="center"
+                borderRadius="6px"
+                height="30px"
+                fontSize="15px"
+                padding="2px"
+                cursor="pointer"
+              >
+                <HStack>
+                  <AiOutlinePlusCircle />
+                  <Text>Add</Text>
+                </HStack>
+              </Box>
+            </Link>
+            <Link to="add-category">
+              <Box
+                width='120px'
+                background='lightgrey'
+                className="add-button"
+                border="1px solid black"
+                alignItems="center"
+                borderRadius="6px"
+                height="30px"
+                fontSize="15px"
+                padding="1px"
+                cursor="pointer"
+              >
+                <HStack>
+                  <AiOutlinePlusCircle />
+                  <Text>Add Category</Text>
+                </HStack>
+              </Box>
+            </Link>
+          </HStack>
 
         </Box>
       ) : (

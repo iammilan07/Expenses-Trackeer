@@ -2,6 +2,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { AiOutlineHome } from "react-icons/ai";
 import Modal from "react-modal"
 import { Link } from "react-router-dom";
+
 const Successmodal = (props: any) => {
   const { modalOpen } = props;
   const customStyles = {

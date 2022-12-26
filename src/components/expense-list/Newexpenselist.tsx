@@ -1,11 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
-
-import {
-    selectMappedList,
-} from "../../redux/index/index";
+import { selectMappedList } from "../../redux/index/index";
 
 import Card from "./Card";
 

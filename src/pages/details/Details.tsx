@@ -3,25 +3,20 @@ import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineHome } from "react-icons/ai";
-import { selectExpenseList, selectMappedList, selectpiechart } from "../../redux/index/index";
+import { selectcategoryList, selectExpenseList, selectMappedList, selectpiechart, selectpiechartcat } from "../../redux/index/index";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
-import Expenselist from '../../components/expense-list/Expenselist';
 import Newexpenselist from '../../components/expense-list/Newexpenselist';
 
 
 const Details = () => {
     const [date, setDate] = useState(new Date())
+    const dataa = useSelector(selectcategoryList)
     const list = useSelector(selectExpenseList);
     const data = useSelector(selectpiechart)
-    const sdata = useSelector(selectMappedList)
-
-    // React.useEffect(() => {
-    //     // dispatch(addExpense(expense))
-    //     dispatch(addExpense(expense))
-    // }, [dispatch])
+    const data2 = useSelector(selectpiechartcat)
 
 
 
@@ -57,7 +52,7 @@ const Details = () => {
 
     return (
         <Box>
-            {/* <pre>{JSON.stringify(sdata, null, 2)}</pre> */}
+            {/* <pre>{JSON.stringify(dataa, null, 2)}</pre> */}
 
             <Link to="/">
                 <Button
@@ -76,43 +71,90 @@ const Details = () => {
 
                 </Button>
             </Link>
+            <Link to="/demo">
+                <Button
+                    border="1px solid black"
+                    borderRadius="6px"
+                    backgroundColor='cyan.400'
+                    marginLeft="735px"
+                >
+                    <HStack
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <AiOutlineHome />
+                        <Text>Demo</Text>
+                    </HStack>
+
+                </Button>
+            </Link>
+
             <Text textAlign='center' paddingTop='25px'>Expenses Details</Text>
 
-            <Box alignItems='center' justifyContent='center' display='flex'>
+            <Box alignItems='center' display='flex'>
 
-                <PieChart width={400} height={400}>
+                <Box>
+                    <PieChart width={400} height={450}>
 
-                    <Legend layout="vertical" verticalAlign="top" align="center" />
+                        <Legend layout="vertical" verticalAlign="top" align="center" />
 
-                    <Pie
-                        data={data}
-                        cx={200}
-                        cy={200}
-                        labelLine={false}
-                        label={renderCustomizedLabel}
-                        outerRadius={120}
-                        fill="#8884d8"
-                        dataKey="value"
-                    >
+                        <Pie
+                            data={data}
+                            cx={200}
+                            cy={200}
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={120}
+                            fill="#8884d8"
+                            dataKey="value"
+                        >
 
-                        {list.map((expense: any, index: any) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            {list.map((expense: any, index: any) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                    </PieChart>
+                    <Text paddingTop='10px' as='b' paddingLeft='100px'>Pie-Chart based on expenses.</Text>
+                </Box>
 
 
-                        ))}
-                    </Pie>
-                </PieChart>
+                <Box>
+                    <PieChart width={400} height={450}>
+
+                        <Legend layout="vertical" verticalAlign="top" align="center" />
+
+                        <Pie
+                            data={data2}
+                            cx={200}
+                            cy={200}
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={120}
+                            fill="#8884d8"
+                            dataKey="value"
+                        >
+
+                            {list.map((expense: any, index: any) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+
+
+                            ))}
+                        </Pie>
+                    </PieChart>
+                    <Text paddingTop='10px' as='b' paddingLeft='100px'>Pie-Chart based on category.</Text>
+                </Box>
 
 
 
             </Box>
-            <Box display='flex'>
+
+            <Box display='flex' justifyContent='center' paddingTop='50px'>
                 <Box className="app">
-                    <Text className="header">React Calendar</Text>
+                    <Text className="header" textAlign='center' justifyContent='center'>React Calendar</Text>
                     <Box className="calendar-container">
                         <Calendar onChange={setDate} value={date} />
                     </Box>
-                    <Box className="text-center">
+                    <Box className="text-center" justifyContent='center'>
                         Selected date: {date.toLocaleDateString()}
                     </Box>
                 </Box>
