@@ -36,9 +36,9 @@ export const expenseSlice = createSlice({
     },
 
     addCategory: (state, action) => {
-      const newState = [...state.category, action.payload];
-      localStorage.setItem(storagevalue, JSON.stringify(newState));
-      state.category = newState
+      const newData = [...state.category, action.payload];
+      localStorage.setItem(storagevalue, JSON.stringify(newData));
+      state.category = newData
     },
 
 
@@ -65,6 +65,6 @@ export const expenseSlice = createSlice({
   },
 });
 
-export const { addExpense, addCategory, deleteExpense, searchExpense } =
+export const { addExpense, addCategory, deleteExpense, editExpense, searchExpense } =
   expenseSlice.actions;
 export default expenseSlice.reducer;

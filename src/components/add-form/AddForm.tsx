@@ -86,6 +86,8 @@ const AddForm = () => {
         </HStack>
       </Box>
 
+
+      {/* Category */}
       <Box className="category-container-parent">
         <Box className="category" >
           <Box
@@ -100,6 +102,9 @@ const AddForm = () => {
               <IoIosArrowDropdown style={{ alignItems: "center" }} />
             </Box>
           </Box>
+
+
+          {/* categoryopen wala code */}
           {categoryOpen && (
             <Box className="category-container">
               {cat.map((category) => (
@@ -125,6 +130,10 @@ const AddForm = () => {
           )}
         </Box>
       </Box>
+
+
+
+      {/* AddButton */}
       <Box alignItems='center' cursor="pointer"
         className="Form-add-button" paddingTop="20px" paddingLeft="730px">
         <Button

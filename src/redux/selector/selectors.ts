@@ -1,5 +1,5 @@
 export const selectExpenseList = (state: any) => state.expenseList.expense;
-
+export const selectCategoryList = (state: any) => state.expenseList.category;
 
 
 

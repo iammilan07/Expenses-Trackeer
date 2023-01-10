@@ -11,7 +11,6 @@ import Card from "./Card";
 const Expenselist = () => {
 
   const list = useSelector(selectMappedList);
-
   const notifySuccess = () => toast.success("Deleted Successfully");
 
   return <ul>
