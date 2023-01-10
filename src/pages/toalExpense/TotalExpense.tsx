@@ -7,7 +7,7 @@ const TotalExpense = () => {
     const list = useSelector(selectExpenseList)
     let incc = 0;
     let decc = 0;
-    list.map((expense: any) => {
+    list.forEach((expense: any) => {
         if (Number(expense.amount) > 0) {
             incc = incc + Number(expense.amount);
         } else {
@@ -17,7 +17,7 @@ const TotalExpense = () => {
 
     return (
         <HStack textAlign='center' justifyContent='center' display='flex'>
-            <Text as="b">Your expenses=</Text>
+            <Text as="b">Your Total Expenses=</Text>
             <Text as='b' color='red'>RS {incc - decc}</Text>
         </HStack>
 

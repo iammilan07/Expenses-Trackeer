@@ -1,6 +1,3 @@
-import { CategoryScale } from "chart.js";
-import { categories } from "../../constants/Addcategories";
-
 
 export const selectExpenseList = (state: any) => state.expenseList.expense;
 

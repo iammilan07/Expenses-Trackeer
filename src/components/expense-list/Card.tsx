@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment/moment";
-import { Box, Image, Text } from "@chakra-ui/react";
-import { AiOutlineDelete } from "react-icons/ai";
+import { Box, HStack, Image, Text } from "@chakra-ui/react";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { deleteExpense } from "../../redux/index/index";
+import { deleteExpense, editExpense } from "../../redux/index/index";
 
 const Card = (props: any) => {
   const { expense, notifySuccess } = props;
@@ -17,6 +17,9 @@ const Card = (props: any) => {
     notifySuccess();
     dispatch(deleteExpense(expense));
   };
+  const handleEdit = () => {
+    dispatch(editExpense(expense))
+  }
   return (
     <Box
       className="card"
@@ -64,9 +67,15 @@ const Card = (props: any) => {
           </Text>
         </Box>
 
-        <Text cursor="pointer" className="delete-icon" fontSize="16px" >
-          <AiOutlineDelete onClick={handleDelete} />
-        </Text>
+        <HStack>
+          <Text cursor="pointer" className="delete-icon" fontSize="16px" >
+            <AiOutlineDelete onClick={handleDelete} />
+          </Text>
+
+          <Text cursor="pointer" className="delete-icon" fontSize="16px" >
+            <AiOutlineEdit onClick={handleEdit} />
+          </Text>
+        </HStack>
       </Box>
 
 
@@ -74,6 +83,7 @@ const Card = (props: any) => {
 
 
     </Box>
+
 
   );
 };

@@ -1,21 +1,17 @@
 import React from 'react'
-import { Box, Button, HStack, Image, Input, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { IoIosArrowDropdown } from "react-icons/io";
 import { BiPaperPlane } from "react-icons/bi";
-import { categories } from "../../constants/Addcategories";
-import { useDispatch } from "react-redux";
+
 import "../../components/add-form/addform.css";
-import { addExpense } from "../../redux/index/index";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "../../components/add-form/Categorysucess";
 
 
 const Addcategory = () => {
-    const [categoryOpen, setCategoryOpen] = useState(false);
-    const cat = categories;
     const [title, setTitle] = useState("");
+
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleTitle = (e: any) => {
@@ -29,14 +25,14 @@ const Addcategory = () => {
             notify();
             return;
         }
-        const data = {
-            title,
+        // const data = {
+        //     title,
 
-        };
-
+        // };
         // dispatch(addExpense(data));
         setModalOpen(!modalOpen);
     };
+
     return (
         <Box className="add-fromm">
             <Successmodal modalOpen={modalOpen} />
@@ -48,16 +44,26 @@ const Addcategory = () => {
                 closeOnClick
             />
             <Text as='b' textAlign='center' color='blue' paddingBottom='10px'>Add your desire category!!</Text>
-            <HStack className="form-item">
-                <label>Category-Title</label>
+            <Box justifyContent='space-between'>
+                <HStack className="form-item">
+                    <label>Category-Title</label>
 
-                <Input
-                    placeholder="Add Category Name"
-                    value={title}
-                    onChange={(e) => handleTitle(e)}
-                />
-            </HStack>
+                    <Input
+                        placeholder="Add Category Name"
+                        value={title}
+                        onChange={(e) => handleTitle(e)}
+                    />
+                </HStack>
+                <HStack className="form-item" marginTop='5px'>
+                    <label>Category-Color</label>
 
+                    <Input
+                        placeholder="Add Category Color"
+
+
+                    />
+                </HStack>
+            </Box>
 
 
             <Box alignItems='center' cursor="pointer"

@@ -34,20 +34,12 @@ export const expenseSlice = createSlice({
       localStorage.setItem(storageKey, JSON.stringify(newStatee));
       state.expense = newStatee;
     },
-
-
-
-
-
-
     editExpense: (state: any, action: any) => {
       let { expense } = state;
       state.expense = expense.map((item: any) =>
         item.id === action.payload.id ? action.payload : item
       )
     },
-
-
     searchExpense: (state: any, action: any) => {
       const { query } = action;
       return {

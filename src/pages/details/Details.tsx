@@ -3,7 +3,7 @@ import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineHome } from "react-icons/ai";
-import { selectcategoryList, selectExpenseList, selectMappedList, selectpiechart, selectpiechartcat } from "../../redux/index/index";
+import { selectExpenseList, selectpiechart, selectpiechartcat } from "../../redux/index/index";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -13,7 +13,7 @@ import Newexpenselist from '../../components/expense-list/Newexpenselist';
 
 const Details = () => {
     const [date, setDate] = useState(new Date())
-    const dataa = useSelector(selectcategoryList)
+
     const list = useSelector(selectExpenseList);
     const data = useSelector(selectpiechart)
     const data2 = useSelector(selectpiechartcat)
@@ -94,7 +94,7 @@ const Details = () => {
             <Box alignItems='center' display='flex'>
 
                 <Box>
-                    <PieChart width={400} height={450}>
+                    <PieChart width={400} height={500}>
 
                         <Legend layout="vertical" verticalAlign="top" align="center" />
 
@@ -114,12 +114,12 @@ const Details = () => {
                             ))}
                         </Pie>
                     </PieChart>
-                    <Text paddingTop='10px' as='b' paddingLeft='100px'>Pie-Chart based on expenses.</Text>
+                    <Text as='b' paddingLeft='100px'>Pie-Chart based on expenses.</Text>
                 </Box>
 
 
-                <Box>
-                    <PieChart width={400} height={450}>
+                <Box paddingTop='65px'>
+                    <PieChart width={400} height={500}>
 
                         <Legend layout="vertical" verticalAlign="top" align="center" />
 
@@ -141,7 +141,7 @@ const Details = () => {
                             ))}
                         </Pie>
                     </PieChart>
-                    <Text paddingTop='10px' as='b' paddingLeft='100px'>Pie-Chart based on category.</Text>
+                    <Text as='b' paddingLeft='100px'>Pie-Chart based on category.</Text>
                 </Box>
 
 
