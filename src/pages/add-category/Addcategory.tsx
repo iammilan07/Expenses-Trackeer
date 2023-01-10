@@ -2,34 +2,38 @@ import React from 'react'
 import { Box, Button, HStack, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { BiPaperPlane } from "react-icons/bi";
-
+import { useDispatch } from "react-redux";
 import "../../components/add-form/addform.css";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "../../components/add-form/Categorysucess";
+import { addCategory } from '../../redux/index';
 
 
 const Addcategory = () => {
     const [title, setTitle] = useState("");
-
+    const [color, setColor] = useState("");
+    const dispatch = useDispatch();
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleTitle = (e: any) => {
         setTitle(e.target.value);
     };
+    const handleColor = (e: any) => {
+        setColor(e.target.value);
+    };
 
 
     const handleSubmit = () => {
-        if (title === "") {
-            const notify = () => toast("Please enter a valid a data");
-            notify();
-            return;
-        }
-        // const data = {
-        //     title,
 
-        // };
-        // dispatch(addExpense(data));
+        const data = {
+            title,
+            color,
+
+
+        };
+
+        dispatch(addCategory(data));
         setModalOpen(!modalOpen);
     };
 
@@ -59,7 +63,8 @@ const Addcategory = () => {
 
                     <Input
                         placeholder="Add Category Color"
-
+                        value={color}
+                        onChange={(e) => handleColor(e)}
 
                     />
                 </HStack>

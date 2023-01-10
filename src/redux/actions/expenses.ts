@@ -6,6 +6,9 @@ export const addExpense = (expense: any): any => (dispatch: any) => {
   dispatch(fromSlice.addExpense(expense))
 };
 
+export const addCategory = (expense: any): any => (dispatch: any) => {
+  dispatch(fromSlice.addCategory(expense))
+};
 export const deleteExpense = (item: any): any => (dispatch: any) => {
 
   dispatch(fromSlice.deleteExpense(item))
