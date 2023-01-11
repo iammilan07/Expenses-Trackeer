@@ -3,9 +3,9 @@ import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { BiPaperPlane } from "react-icons/bi";
 import { categories } from "../../constants/Addcategories";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./addform.css";
-import { addExpense } from "../../redux/index/index";
+import { addExpense, selectCategoryList, selectcategoryList, selectExpenseList } from "../../redux/index/index";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "./Successmodal";
@@ -20,6 +20,8 @@ const AddForm = () => {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
 
+  const categoryList = useSelector(selectCategoryList)
+  // console.log("test", test)
   const handleTitle = (e: any) => {
     setTitle(e.target.value);
   };
@@ -107,7 +109,26 @@ const AddForm = () => {
           {/* categoryopen wala code */}
           {categoryOpen && (
             <Box className="category-container">
-              {cat.map((category) => (
+              {categoryList.map((category: any) => (
+                <Box
+                  backgroundColor="yellow.200"
+                  className="category-item"
+                  style={{
+                    borderRight: `5px solid ${category.color}`,
+                  }}
+                  key={category.id}
+                  onClick={() => handleCategory(category)}
+                >
+                  <label>{category.title}</label>
+                  <Image
+                    cursor="pointer"
+                    height="20px"
+                    src={category.icon}
+                    alt={category.title}
+                  />
+                </Box>
+              ))}
+              {cat.map((category: any) => (
                 <Box
                   backgroundColor="yellow.200"
                   className="category-item"
@@ -132,8 +153,6 @@ const AddForm = () => {
       </Box>
 
 
-
-      {/* AddButton */}
       <Box alignItems='center' cursor="pointer"
         className="Form-add-button" paddingTop="20px" paddingLeft="730px">
         <Button

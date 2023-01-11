@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import expenseSlice from "../slice/expenses";
+import categorySlice from "../slice/category"
+
 
 
 export const store = configureStore({
   reducer: {
     expenseList: expenseSlice,
+    categoryList: categorySlice
 
   },
   middleware: getDefaultMiddleware =>

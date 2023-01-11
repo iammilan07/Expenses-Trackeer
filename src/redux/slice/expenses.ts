@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { storageKey, storagevalue } from "../../constants";
+import { storageKey } from "../../constants";
 
 const initialList = () => {
   const list = localStorage.getItem("expense-list");
@@ -9,19 +9,9 @@ const initialList = () => {
   }
   return expenses;
 };
-const initialListCat = () => {
-  const item = localStorage.getItem("category-item");
-  let categories = [];
-  if (item) {
-    categories = JSON.parse(item);
-  }
-  return categories;
-};
-
 
 const initialState = {
   expense: initialList(),
-  category: initialListCat(),
   query: "",
 };
 
@@ -35,11 +25,6 @@ export const expenseSlice = createSlice({
       state.expense = newState
     },
 
-    addCategory: (state, action) => {
-      const newData = [...state.category, action.payload];
-      localStorage.setItem(storagevalue, JSON.stringify(newData));
-      state.category = newData
-    },
 
 
     deleteExpense: (state: any, action: any) => {
@@ -65,6 +50,6 @@ export const expenseSlice = createSlice({
   },
 });
 
-export const { addExpense, addCategory, deleteExpense, editExpense, searchExpense } =
+export const { addExpense, deleteExpense, editExpense, searchExpense } =
   expenseSlice.actions;
 export default expenseSlice.reducer;

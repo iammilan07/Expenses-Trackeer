@@ -10,6 +10,7 @@ import Successmodal from "../../components/add-form/Categorysucess";
 import { addCategory } from '../../redux/index';
 
 
+
 const Addcategory = () => {
     const [title, setTitle] = useState("");
     const [color, setColor] = useState("");
@@ -24,12 +25,12 @@ const Addcategory = () => {
     };
 
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: any) => {
+
 
         const data = {
             title,
             color,
-
 
         };
 
@@ -67,7 +68,10 @@ const Addcategory = () => {
                         onChange={(e) => handleColor(e)}
 
                     />
+
                 </HStack>
+
+
             </Box>
 
 
