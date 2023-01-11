@@ -99,13 +99,14 @@ const Topfold = () => {
                 alignItems="center"
                 borderRadius="6px"
                 height="30px"
+                width='100px'
                 fontSize="15px"
                 padding="2px"
                 cursor="pointer"
               >
                 <HStack>
                   <AiOutlinePlusCircle />
-                  <Text>Add</Text>
+                  <Text>Add Items</Text>
                 </HStack>
               </Box>
             </Link>
