@@ -48,6 +48,7 @@ export const selectMappedData = (state: any) => {
         const total = expenseCloned.reduce((acc: any, curr: any) => {
           return acc + curr.amount
         }, 0)
+        console.log("data",total)
     
      expenseCloned.push({
         title: 'Total',
@@ -64,7 +65,7 @@ Object.keys(f).forEach(key => {
     const expArr = f[key];
     // console.log(expArr)
     expArr.forEach((exp:any)=> {
-       console.log(exp.title, exp.amount)
+    //    console.log(exp.title, exp.amount)
     })
 })
 return f;

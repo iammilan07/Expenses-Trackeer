@@ -4,7 +4,6 @@ import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { deleteExpense, editExpense } from "../../redux/index/index";
-
 const Card = (props: any) => {
   const { expense, notifySuccess } = props;
   const time = moment(expense?.createdAt).fromNow();

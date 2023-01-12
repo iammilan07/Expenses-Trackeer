@@ -17,7 +17,7 @@ const TotalExpense = () => {
 
     return (
         <HStack textAlign='center' justifyContent='center' display='flex'>
-            <Text as="b">Your Total Expenses=</Text>
+            <Text as="b">Your whole Total Expenses=</Text>
             <Text as='b' color='red'>RS {incc - decc}</Text>
         </HStack>
 

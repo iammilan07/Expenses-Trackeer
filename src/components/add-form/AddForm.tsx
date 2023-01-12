@@ -1,17 +1,23 @@
 import { Box, Button, HStack, Image, Input, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from 'react'
+import { usePouch } from 'use-pouchdb'
 import { IoIosArrowDropdown } from "react-icons/io";
 import { BiPaperPlane } from "react-icons/bi";
 import { categories } from "../../constants/Addcategories";
 import { useDispatch, useSelector } from "react-redux";
 import "./addform.css";
-import { addExpense, selectCategoryList } from "../../redux/index/index";
+import { addExpense, newExpense, selectCategoryList } from "../../redux/index/index";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "./Successmodal";
+import { Form } from "react-router-dom";
 
 
 const AddForm = () => {
+
+  const db = usePouch() // get the database
+  const [input, setInput] = useState('')
+
   const [categoryOpen, setCategoryOpen] = useState(false);
   const cat = categories;
   const [title, setTitle] = useState("");
@@ -35,7 +41,20 @@ const AddForm = () => {
     setCategory(category);
     setCategoryOpen(false);
   };
+  const handleAdd = async (event: any) => {
+    event.preventDefault()
 
+    const doc = {
+      _id: new Date().toJSON(), // give the document a unique id
+      type: 'expense',
+      text: input,
+      done: false,
+    }
+
+    await db.put(doc) // put the new document into the database
+
+    setInput('')
+  }
   const handleSubmit = () => {
     if (title === "" || amount === 0 || !category) {
       const notify = () => toast("Please enter a valid a data");
@@ -49,6 +68,7 @@ const AddForm = () => {
       createdAt: new Date(),
     };
     dispatch(addExpense(data));
+    // dispatch(newExpense(data));
     setModalOpen(!modalOpen);
   };
 
@@ -65,115 +85,116 @@ const AddForm = () => {
   // });
   return (
     <Box className="add-from">
-      <Successmodal modalOpen={modalOpen} />
-      <ToastContainer
-        position="bottom-left"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-      />
-
-      <HStack className="form-item">
-        <label>Title</label>
-        <Input
-          placeholder="Expenditure Name"
-          value={title}
-          onChange={(e) => handleTitle(e)}
+      <Form onSubmit={handleAdd}>
+        <Successmodal modalOpen={modalOpen} />
+        <ToastContainer
+          position="bottom-left"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
         />
-      </HStack>
-      <Box paddingTop="10px">
+
         <HStack className="form-item">
-          <label>Amountरु</label>
+          <label>Title</label>
           <Input
-            className="amount-input"
-            placeholder="Enter Amount"
-            value={amount}
-            onChange={(e) => handleAmount(e)}
+            placeholder="Expenditure Name"
+            value={title}
+            onChange={(e) => handleTitle(e)}
           />
         </HStack>
-      </Box>
-
-
-      {/* Category */}
-      <Box className="category-container-parent">
-        <Box className="category" >
-          <Box
-            className="category-dropdown"
-            cursor="pointer"
-            display="flex"
-            onClick={() => setCategoryOpen(!categoryOpen)}
-          >
-            <Box display="flex" backgroundColor='lightgray' padding="2px 12px"
-            >
-              <Text border-radius="6px">{category ? category?.title : "Category"}</Text>
-              <IoIosArrowDropdown style={{ alignItems: "center" }} />
-            </Box>
-          </Box>
-
-
-          {/* categoryopen wala code */}
-          {categoryOpen && (
-            <Box className="category-container">
-              {categoryList.map((category: any) => (
-                <Box
-                  backgroundColor="yellow.200"
-                  className="category-item"
-                  style={{
-                    borderRight: `5px solid ${category.color}`,
-                  }}
-                  key={category.id}
-                  onClick={() => handleCategory(category)}
-                >
-                  <label>{category.title}</label>
-                  <Image
-                    cursor="pointer"
-                    height="20px"
-                    src={category.icon}
-                    alt={category.title}
-                  />
-                </Box>
-              ))}
-              {cat.map((category: any) => (
-                <Box
-                  backgroundColor="yellow.200"
-                  className="category-item"
-                  style={{
-                    borderRight: `5px solid ${category.color}`,
-                  }}
-                  key={category.id}
-                  onClick={() => handleCategory(category)}
-                >
-                  <label>{category.title}</label>
-                  <Image
-                    cursor="pointer"
-                    height="20px"
-                    src={category.icon}
-                    alt={category.title}
-                  />
-                </Box>
-              ))}
-            </Box>
-          )}
+        <Box paddingTop="10px">
+          <HStack className="form-item">
+            <label>Amountरु</label>
+            <Input
+              className="amount-input"
+              placeholder="Enter Amount"
+              value={amount}
+              onChange={(e) => handleAmount(e)}
+            />
+          </HStack>
         </Box>
-      </Box>
 
 
-      <Box alignItems='center' cursor="pointer"
-        className="Form-add-button" paddingTop="20px" paddingLeft="730px">
-        <Button
-          display="flex"
-          onClick={handleSubmit}
-          border="1px solid black"
-          padding="2px 8px"
-          borderRadius="6px"
-          cursor="pointer"
+        {/* Category */}
+        <Box className="category-container-parent">
+          <Box className="category" >
+            <Box
+              className="category-dropdown"
+              cursor="pointer"
+              display="flex"
+              onClick={() => setCategoryOpen(!categoryOpen)}
+            >
+              <Box display="flex" backgroundColor='lightgray' padding="2px 12px"
+              >
+                <Text border-radius="6px">{category ? category?.title : "Category"}</Text>
+                <IoIosArrowDropdown style={{ alignItems: "center" }} />
+              </Box>
+            </Box>
 
-        >
-          <Text cursor="pointer">Add </Text >
-          <BiPaperPlane />
-        </Button>
-      </Box>
+
+            {/* categoryopen wala code */}
+            {categoryOpen && (
+              <Box className="category-container">
+                {categoryList.map((category: any) => (
+                  <Box
+                    backgroundColor="yellow.200"
+                    className="category-item"
+                    style={{
+                      borderRight: `5px solid ${category.color}`,
+                    }}
+                    key={category.id}
+                    onClick={() => handleCategory(category)}
+                  >
+                    <label>{category.title}</label>
+                    <Image
+                      cursor="pointer"
+                      height="20px"
+                      src={category.icon}
+                      alt={category.title}
+                    />
+                  </Box>
+                ))}
+                {cat.map((category: any) => (
+                  <Box
+                    backgroundColor="yellow.200"
+                    className="category-item"
+                    style={{
+                      borderRight: `5px solid ${category.color}`,
+                    }}
+                    key={category.id}
+                    onClick={() => handleCategory(category)}
+                  >
+                    <label>{category.title}</label>
+                    <Image
+                      cursor="pointer"
+                      height="20px"
+                      src={category.icon}
+                      alt={category.title}
+                    />
+                  </Box>
+                ))}
+              </Box>
+            )}
+          </Box>
+        </Box>
+
+
+        <Box alignItems='center' cursor="pointer"
+          className="Form-add-button" paddingTop="20px" paddingLeft="730px">
+          <Button
+            display="flex"
+            onClick={handleSubmit}
+            border="1px solid black"
+            padding="2px 8px"
+            borderRadius="6px"
+            cursor="pointer"
+          >
+            <Text cursor="pointer">Add </Text >
+            <BiPaperPlane />
+          </Button>
+        </Box>
+      </Form>
     </Box>
   );
 };

@@ -4,10 +4,28 @@ import Home from "./pages/home/Home";
 import Addexpense from "./pages/add-expense/Addexpense";
 import Details from "./pages/details/Details";
 import Addcategory from "./pages/add-category/Addcategory";
-
-
+import React from 'react'
+import PouchDB from 'pouchdb-browser'
+import { Provider } from 'use-pouchdb'
 
 function App() {
+
+
+  var db = new PouchDB('expenses');
+  var remoteCouch = false;
+
+  // useEffect(() => {
+  //   const listener = (dbName: any) => {
+  //     if (dbName === 'local') {
+  //       setDB(new PouchDB('local'))
+  //     }
+  //   }
+
+  //   PouchDB.on('destroyed', listener)
+  //   return () => {
+  //     PouchDB.removeListener('destroyed', listener)
+  //   }
+  // }, [])
 
   const router = createBrowserRouter([
     {
@@ -27,7 +45,14 @@ function App() {
       element: <Addcategory />
     }
   ]);
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <>
+      <Provider pouchdb={db}>
+        <RouterProvider router={router}></RouterProvider>;
+      </Provider>
+    </>
+  )
+
 }
 
 export default App;

@@ -17,7 +17,7 @@ root.render(
       <Box
         alignItems="center"
         background="#09b0ed"
-        height="700px"
+        height="900px"
         width="70%"
         marginLeft="250px"
       >

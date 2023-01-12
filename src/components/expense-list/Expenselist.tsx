@@ -1,37 +1,58 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { selectMappedData, selectMappedList } from "../../redux/index/index";
+import { selectMappedList } from "../../redux/index/index";
 import Card from "./Card";
 
 const Expenselist = () => {
 
-  const data = useSelector(selectMappedData)
-  // console.log(data)
-  let incc = 0;
-  let decc = 0;
-  Object.entries(data).forEach((expense: any) => {
-    // console.log(expense)
-    if (Number(expense.amount) > 0) {
-      incc = incc + Number(expense.amount);
-    } else {
-      decc = decc - Number(expense.amount);
-    }
-  });
-  const list = useSelector(selectMappedList);
+
+  const data = useSelector(selectMappedList)
+
+  let totalExpense: any = {};
+
+  const xMapped = Object.keys(data).forEach((key: any) => {
+    const expenseCloned = data[key];
+
+    const total = expenseCloned.reduce((acc: any, curr: any) => {
+      return acc + curr.amount
+    }, 0)
+
+    expenseCloned.push({
+      title: 'Total',
+      amount: total,
+    })
+
+    totalExpense[key] = expenseCloned
+
+  })
+  console.log(xMapped)
+
+  Object.keys(totalExpense).forEach(key => {
+
+
+    const expArr = totalExpense[key];
+
+    expArr.forEach((exp: any) => {
+      console.log(exp.amount)
+    })
+    return totalExpense;
+  })
+
   const notifySuccess = () => toast.success("Deleted Successfully");
 
   return <Box>
 
 
-    {list && Object.keys(list).map((key: any) => {
+    {totalExpense && Object.keys(totalExpense).map((key: any) => {
 
       return <Box key={key}>
         <Text as='b'>{key}</Text>
-        {list[key]?.length !== 0 && list[key]?.map((expense: any, index: number) => {
-          return <Card key={index} expense={expense} notifySuccess={notifySuccess} />
+        {totalExpense[key]?.length !== 0 && totalExpense[key]?.map((expense: any, index: number) => {
+          if (expense?.title !== "Total") return <Card key={index} expense={expense} notifySuccess={notifySuccess} />
+          else return <Text textAlign='center'>Your Total Expenses is=RS {expense.amount}   </Text>;
         })}
-        <Text textAlign='center'>Your Total Expenses is=RS  {incc - decc} </Text>
+
       </Box>
     }
     )}

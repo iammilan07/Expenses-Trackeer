@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { storageKey } from "../../constants";
+import { trackDb } from "../../database";
 
 const initialList = () => {
   const list = localStorage.getItem("expense-list");
@@ -12,6 +13,7 @@ const initialList = () => {
 
 const initialState = {
   expense: initialList(),
+  // expense: '',
   query: "",
 };
 
@@ -25,6 +27,14 @@ export const expenseSlice = createSlice({
       state.expense = newState
     },
 
+
+    // addExpense: (state, action) => {
+    //   let newList = {
+    //     id: Math.random(),
+    //     content: action.payload.newContent,
+    //   };
+    //   state.expense.push(newList);
+    // },
 
 
     deleteExpense: (state: any, action: any) => {
