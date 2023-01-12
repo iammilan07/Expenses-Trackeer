@@ -5,7 +5,7 @@ import { BiPaperPlane } from "react-icons/bi";
 import { categories } from "../../constants/Addcategories";
 import { useDispatch, useSelector } from "react-redux";
 import "./addform.css";
-import { addExpense, selectCategoryList, selectcategoryList, selectExpenseList } from "../../redux/index/index";
+import { addExpense, selectCategoryList } from "../../redux/index/index";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "./Successmodal";
@@ -19,9 +19,7 @@ const AddForm = () => {
   const [category, setCategory] = useState<any>();
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
-
   const categoryList = useSelector(selectCategoryList)
-  // console.log("test", test)
   const handleTitle = (e: any) => {
     setTitle(e.target.value);
   };
@@ -36,7 +34,6 @@ const AddForm = () => {
   const handleCategory = (category: any) => {
     setCategory(category);
     setCategoryOpen(false);
-
   };
 
   const handleSubmit = () => {
@@ -51,11 +48,21 @@ const AddForm = () => {
       category,
       createdAt: new Date(),
     };
-
     dispatch(addExpense(data));
     setModalOpen(!modalOpen);
   };
 
+
+  // var todo={
+  //   id: new Date().toISOString(),
+  //   title: text,
+  //   completed:false
+  // };
+  // dblClick.put(todo,function callback(err,result){
+  //   if(!err){
+  //     console,log('Successfully posted a todo!')
+  //   }
+  // });
   return (
     <Box className="add-from">
       <Successmodal modalOpen={modalOpen} />
@@ -69,7 +76,6 @@ const AddForm = () => {
 
       <HStack className="form-item">
         <label>Title</label>
-
         <Input
           placeholder="Expenditure Name"
           value={title}

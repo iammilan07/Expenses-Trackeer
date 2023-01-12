@@ -7,11 +7,7 @@ import { deleteExpense, editExpense } from "../../redux/index/index";
 
 const Card = (props: any) => {
   const { expense, notifySuccess } = props;
-
-
-
   const time = moment(expense?.createdAt).fromNow();
-
   const dispatch = useDispatch();
   const handleDelete = () => {
     notifySuccess();
@@ -20,11 +16,10 @@ const Card = (props: any) => {
   const handleEdit = () => {
     dispatch(editExpense(expense))
   }
+
   return (
     <Box
       className="card"
-      // style={{ borderRight: `6px solid ${expense.category.color}` }
-      // }
       borderRight={`6px solid ${expense?.category?.color}`}
       backgroundColor="white"
       padding="12px"
@@ -78,13 +73,7 @@ const Card = (props: any) => {
         </HStack>
       </Box>
 
-
-
-
-
     </Box>
-
-
   );
 };
 

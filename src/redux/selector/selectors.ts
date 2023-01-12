@@ -1,29 +1,80 @@
 export const selectExpenseList = (state: any) => state.expenseList.expense;
 export const selectCategoryList = (state: any) => state.categoryList.category;
-
+export const selectcreate=(state:any)=>state.expenseList.expense.createdAt
 
 
 
 export const selectMappedList = (state: any) => {
-
-    let x: any = {}
+let x: any = {}
     const mapped = state.expenseList.expense.map((item: any) => {
         return {
             ...item,
-            createdAt: new Date(item.createdAt).toLocaleDateString("en-US")
-        }
+            createdAt: new Date(item.createdAt).toLocaleDateString("en-US"),
+       }
     })
-
-    mapped.forEach((item: any) => {
+ mapped.forEach((item: any) => {
         if (!x[item.createdAt]) {
             x[item.createdAt] = [];
             x[item.createdAt].push(item);
-        } else {
+      } else {
             x[item.createdAt].push(item);
         }
     })
     return x
 };
+
+
+export const selectMappedData = (state: any) => {
+    let x: any = {}
+    const mapped = state.expenseList.expense.map((item: any) => {
+        return {
+            ...item,
+            createdAt: new Date(item.createdAt).toLocaleDateString("en-US"),
+       }
+    })
+ mapped.forEach((item: any) => {
+        if (!x[item.createdAt]) {
+            x[item.createdAt] = [];
+            x[item.createdAt].push(item);
+      } else {
+            x[item.createdAt].push(item);
+        }
+    })
+    let f:any = {};
+ 
+    const xMapped = Object.keys(x).forEach((key:any) => {
+        const expenseCloned = x[key];
+        
+        const total = expenseCloned.reduce((acc: any, curr: any) => {
+          return acc + curr.amount
+        }, 0)
+    
+     expenseCloned.push({
+        title: 'Total',
+         amount: total,
+  })
+
+  f[key] = expenseCloned
+      })
+      
+Object.keys(f).forEach(key => {
+  
+    console.log(key)
+  
+    const expArr = f[key];
+    // console.log(expArr)
+    expArr.forEach((exp:any)=> {
+       console.log(exp.title, exp.amount)
+    })
+})
+return f;
+}
+
+    
+
+
+     
+
 
 
 

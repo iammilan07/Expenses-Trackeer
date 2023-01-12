@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { searchExpense } from "../../redux/index/index";
 import "./topfold.css";
 
-
 const Topfold = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -92,7 +91,6 @@ const Topfold = () => {
 
             <Link to="add-expense">
               <Box
-
                 background='lightgrey'
                 className="add-button"
                 border="1px solid black"

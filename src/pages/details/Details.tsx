@@ -1,14 +1,14 @@
-import React from 'react'
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineHome } from "react-icons/ai";
-import { selectExpenseList, selectpiechart, selectpiechartcat } from "../../redux/index/index";
+import { selectExpenseList, selectMappedData, selectpiechart, selectpiechartcat } from "../../redux/index/index";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
 import Newexpenselist from '../../components/expense-list/Newexpenselist';
+
 
 
 const Details = () => {
@@ -52,7 +52,7 @@ const Details = () => {
 
     return (
         <Box>
-            {/* <pre>{JSON.stringify(dataa, null, 2)}</pre> */}
+            {/* <pre>{JSON.stringify(data1, null, 2)}</pre> */}
 
             <Link to="/">
                 <Button
@@ -71,29 +71,13 @@ const Details = () => {
 
                 </Button>
             </Link>
-            <Link to="/demo">
-                <Button
-                    border="1px solid black"
-                    borderRadius="6px"
-                    backgroundColor='cyan.400'
-                    marginLeft="735px"
-                >
-                    <HStack
-                        justifyContent="center"
-                        alignItems="center"
-                    >
-                        <AiOutlineHome />
-                        <Text>Demo</Text>
-                    </HStack>
 
-                </Button>
-            </Link>
 
-            <Text textAlign='center' paddingTop='25px'>Expenses Details</Text>
-
+            <Text textAlign='center' >Expenses Details</Text>
             <Box alignItems='center' display='flex'>
 
-                <Box>
+
+                <Box marginTop='50px'>
                     <PieChart width={400} height={500}>
 
                         <Legend layout="vertical" verticalAlign="top" align="center" />
@@ -118,7 +102,7 @@ const Details = () => {
                 </Box>
 
 
-                <Box paddingTop='65px'>
+                <Box paddingTop='50px'>
                     <PieChart width={400} height={500}>
 
                         <Legend layout="vertical" verticalAlign="top" align="center" />
@@ -150,7 +134,7 @@ const Details = () => {
 
             <Box display='flex' justifyContent='center' paddingTop='50px'>
                 <Box className="app">
-                    <Text className="header" textAlign='center' justifyContent='center'>React Calendar</Text>
+                    <Text className="header" textAlign='center' justifyContent='center'>Items According to the date!!</Text>
                     <Box className="calendar-container">
                         <Calendar onChange={setDate} value={date} />
                     </Box>
@@ -163,6 +147,7 @@ const Details = () => {
 
             {/* <pre>{JSON.stringify(sdata, null, 2)}</pre> */}
             <Newexpenselist date={date.toLocaleDateString()} />
+
 
         </Box>
     )

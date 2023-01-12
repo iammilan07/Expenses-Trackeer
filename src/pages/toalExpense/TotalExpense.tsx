@@ -4,10 +4,10 @@ import { selectExpenseList } from '../../redux/index';
 
 const TotalExpense = () => {
 
-    const list = useSelector(selectExpenseList)
+    const data = useSelector(selectExpenseList)
     let incc = 0;
     let decc = 0;
-    list.forEach((expense: any) => {
+    data.forEach((expense: any) => {
         if (Number(expense.amount) > 0) {
             incc = incc + Number(expense.amount);
         } else {
