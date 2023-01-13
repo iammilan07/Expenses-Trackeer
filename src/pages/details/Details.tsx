@@ -56,10 +56,13 @@ const Details = () => {
 
             <Link to="/">
                 <Button
+                    width='65px'
+                    height='30px'
+                    fontSize='12px'
                     border="1px solid black"
                     borderRadius="6px"
                     backgroundColor='cyan.400'
-                    marginLeft="240px"
+                    marginLeft="280px"
                 >
                     <HStack
                         justifyContent="center"
@@ -77,8 +80,8 @@ const Details = () => {
             <Box alignItems='center' display='flex' justifyContent='center'>
 
 
-                <Box marginTop='50px'>
-                    <PieChart width={400} height={500}>
+                <Box marginTop='50px' >
+                    <PieChart width={400} height={400}>
 
                         <Legend layout="vertical" verticalAlign="top" align="center" />
 
@@ -133,18 +136,20 @@ const Details = () => {
             </Box>
 
 
-            <Box className="app" paddingTop='50px'>
+            <Box className="app" paddingTop='50px' width='300px'>
                 <Text className="header" >Items According to the date!!</Text>
-                <Box className="calendar-container" width='400px'>
-                    <Calendar onChange={setDate} value={date} />
-                </Box>
+
+                <Calendar onChange={setDate} value={date} />
+
                 <Box className="text-center" >
                     Selected date: {date.toLocaleDateString()}
                 </Box>
             </Box>
+            <Box width='280px' marginLeft='40px'>
+                <Newexpenselist date={date.toLocaleDateString()} />
+            </Box>
 
 
-            <Newexpenselist date={date.toLocaleDateString()} />
 
 
         </Box>

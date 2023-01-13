@@ -1,55 +1,59 @@
-import { Box, Link, Tab, Tabs, Text } from "@chakra-ui/react";
+import { Box, Tab, Tabs, Text } from "@chakra-ui/react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiCommentDetail } from "react-icons/bi";
 import { BsBookmarkPlus } from 'react-icons/bs'
 import { MdAddShoppingCart } from 'react-icons/md'
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
   return (
-    <Box
-      // width="100%"
-      paddingLeft='85px'
-      textAlign='center'
-      position="fixed"
-      bottom="0"
-      justifyContent="center"
-      alignItems="center"
-    // paddingBottom="6px"
-    // paddingRight="450px"
-    >
-      <Box border='1px solid black' borderRadius='10px' width='200px' backgroundColor='white'>
-        <Tabs justifyContent='space-between' variant='soft-rounded' colorScheme='green' display='flex'>
-
-          <Link href='/'>
-            <Tab>
-              <AiOutlineHome />
-            </Tab>
-          </Link>
-          <Link href="add-expense">
-            <Tab>
-              <BsBookmarkPlus />
-            </Tab>
-          </Link>
-          <Link href="add-category">
-            <Tab>
-              <MdAddShoppingCart />
-            </Tab>
-          </Link>
-          <Link href="details">
-            <Tab>
-              <BiCommentDetail />
-            </Tab>
-          </Link>
+    <Box position="sticky" bottom="0">
+      <Box
+        // width="100%"
+        marginTop='100px'
+        paddingLeft='85px'
 
 
-        </Tabs>
-      </Box>
 
-      <Box>
+        justifyContent="center"
+        alignItems="center"
+
+      >
+        <Box border='1px solid black' borderRadius='10px' width='200px' backgroundColor='white'>
+          <Tabs justifyContent='space-between' variant='soft-rounded' colorScheme='green' display='flex'>
+
+            <Link to='/'>
+              <Tab>
+                <AiOutlineHome />
+              </Tab>
+            </Link>
+            <Link to="add-expense">
+              <Tab>
+                <BsBookmarkPlus />
+              </Tab>
+            </Link>
+            <Link to="add-category">
+              <Tab>
+                <MdAddShoppingCart />
+              </Tab>
+            </Link>
+            <Link to="details">
+              <Tab>
+                <BiCommentDetail />
+              </Tab>
+            </Link>
+
+
+          </Tabs>
+        </Box>
+
+
+      </Box >
+      <Box textAlign='center' marginLeft='20px'>
         <Text>Made with ❤️ in Reactredux!!</Text>
       </Box>
-    </Box >
+    </Box>
   );
 };
 

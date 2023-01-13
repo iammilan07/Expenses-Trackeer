@@ -17,9 +17,9 @@ root.render(
   <ChakraProvider theme={AppTheme}>
     <Provider store={store}>
       <AppShell  >
-        <Header />
+
         <App />
-        <Footer />
+
       </AppShell>
     </Provider>
   </ChakraProvider>
