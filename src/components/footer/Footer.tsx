@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <Box
       // width="100%"
-      paddingLeft='300px'
+      paddingLeft='85px'
       textAlign='center'
       position="fixed"
       bottom="0"

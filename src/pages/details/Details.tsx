@@ -2,7 +2,7 @@ import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlineHome } from "react-icons/ai";
-import { selectExpenseList, selectMappedData, selectpiechart, selectpiechartcat } from "../../redux/index/index";
+import { selectExpenseList, selectpiechart, selectpiechartcat } from "../../store/expense/index";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -59,7 +59,7 @@ const Details = () => {
                     border="1px solid black"
                     borderRadius="6px"
                     backgroundColor='cyan.400'
-                    marginLeft="735px"
+                    marginLeft="240px"
                 >
                     <HStack
                         justifyContent="center"
@@ -74,7 +74,7 @@ const Details = () => {
 
 
             <Text textAlign='center' >Expenses Details</Text>
-            <Box alignItems='center' display='flex'>
+            <Box alignItems='center' display='flex' justifyContent='center'>
 
 
                 <Box marginTop='50px'>
@@ -132,20 +132,18 @@ const Details = () => {
 
             </Box>
 
-            <Box display='flex' justifyContent='center' paddingTop='50px'>
-                <Box className="app">
-                    <Text className="header" textAlign='center' justifyContent='center'>Items According to the date!!</Text>
-                    <Box className="calendar-container">
-                        <Calendar onChange={setDate} value={date} />
-                    </Box>
-                    <Box className="text-center" justifyContent='center'>
-                        Selected date: {date.toLocaleDateString()}
-                    </Box>
-                </Box>
 
+            <Box className="app" paddingTop='50px'>
+                <Text className="header" >Items According to the date!!</Text>
+                <Box className="calendar-container" width='400px'>
+                    <Calendar onChange={setDate} value={date} />
+                </Box>
+                <Box className="text-center" >
+                    Selected date: {date.toLocaleDateString()}
+                </Box>
             </Box>
 
-            {/* <pre>{JSON.stringify(sdata, null, 2)}</pre> */}
+
             <Newexpenselist date={date.toLocaleDateString()} />
 
 
@@ -154,3 +152,5 @@ const Details = () => {
 }
 
 export default Details
+
+

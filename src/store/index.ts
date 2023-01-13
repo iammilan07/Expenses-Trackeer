@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import expenseSlice from "../slice/expenses";
-import categorySlice from "../slice/category"
 
+import expenseSlice from "./expense/slice";
+import categorySlice from "./category/slice"
 
 
 export const store = configureStore({

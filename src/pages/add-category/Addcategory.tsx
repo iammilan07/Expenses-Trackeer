@@ -1,14 +1,11 @@
-import React from 'react'
-import { Box, Button, HStack, Input, Text } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { BiPaperPlane } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import "../../components/add-form/addform.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "../../components/add-form/Categorysucess";
-import { addCategory } from '../../redux/index';
-
+import { AiOutlinePlus } from 'react-icons/ai';
+import { addCategory } from '../../store/category/slice';
 
 
 const Addcategory = () => {
@@ -39,7 +36,7 @@ const Addcategory = () => {
     };
 
     return (
-        <Box className="add-fromm">
+        <FormControl className="add-fromm" marginTop='50px'>
             <Successmodal modalOpen={modalOpen} />
             <ToastContainer
                 position="bottom-left"
@@ -48,50 +45,55 @@ const Addcategory = () => {
                 newestOnTop={false}
                 closeOnClick
             />
-            <Text as='b' textAlign='center' color='blue' paddingBottom='10px'>Add your desire category!!</Text>
-            <Box justifyContent='space-between'>
-                <HStack className="form-item">
-                    <label>Category-Title</label>
+            <Text marginTop='80px' as='b' textAlign='center' color='white' paddingBottom='10px'>Add your own category!!</Text>
+            <Box justifyContent='space-between' marginTop='20px' >
+                <Box className="form-item">
+                    <FormLabel>Category-Title</FormLabel>
 
                     <Input
+                        width='300px'
                         placeholder="Add Category Name"
                         value={title}
                         onChange={(e) => handleTitle(e)}
                     />
-                </HStack>
-                <HStack className="form-item" marginTop='5px'>
-                    <label>Category-Color</label>
+                </Box>
+                <Box className="form-item" marginTop='5px'>
+                    <FormLabel>Category-Color</FormLabel>
 
                     <Input
+                        width='300px'
                         placeholder="Add Category Color"
                         value={color}
                         onChange={(e) => handleColor(e)}
 
                     />
 
-                </HStack>
+                </Box>
 
 
             </Box>
 
+            <Box
+                className="Form-add-button" paddingTop="50px" color="white">
+                <Stack direction='row' spacing={4}>
+                    <Button colorScheme='blue'
 
-            <Box alignItems='center' cursor="pointer"
-                className="Form-add-button" paddingTop="20px" paddingLeft="730px">
-                <Button
-                    display="flex"
-                    onClick={handleSubmit}
-                    border="1px solid black"
-                    padding="2px 8px"
-                    borderRadius="6px"
-                    cursor="pointer"
+                        display="flex"
+                        onClick={handleSubmit}
+                        border="1px solid black"
+                        padding="2px 8px"
+                        borderRadius="6px"
+                        cursor="pointer"
+                        color="white" leftIcon={<AiOutlinePlus />}
+                        variant='solid'>
+                        Add
+                    </Button>
 
-                >
-                    <Text cursor="pointer">Add </Text >
-                    <BiPaperPlane />
-                </Button>
+                </Stack>
             </Box>
-        </Box>
+        </FormControl>
     )
 }
 
 export default Addcategory
+

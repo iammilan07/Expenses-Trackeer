@@ -1,10 +1,13 @@
 import { HStack, Text } from '@chakra-ui/react'
 import { useSelector } from 'react-redux';
-import { selectExpenseList } from '../../redux/index';
+// import { selectExpenseList } from '../../redux/index';
+import * as fromExpenseStore from "../../store/expense";
 
 const TotalExpense = () => {
 
-    const data = useSelector(selectExpenseList)
+    return null;
+
+    const data = useSelector(fromExpenseStore.selectExpenseListData)
     let incc = 0;
     let decc = 0;
     data.forEach((expense: any) => {

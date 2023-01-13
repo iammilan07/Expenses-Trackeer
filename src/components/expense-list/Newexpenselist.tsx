@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { selectMappedList } from "../../redux/index/index";
+import { selectMappedList } from "../../store/expense/index";
 
 import Card from "./Card";
 
@@ -32,3 +32,5 @@ const Newexpenselist = (props: any) => {
 };
 
 export default Newexpenselist;
+
+

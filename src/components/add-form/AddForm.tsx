@@ -1,23 +1,18 @@
-import { Box, Button, HStack, Image, Input, Text } from "@chakra-ui/react";
-import React, { useState } from 'react'
-import { usePouch } from 'use-pouchdb'
+import { Box, Button, FormControl, FormLabel, Image, Input, Stack, } from "@chakra-ui/react";
+import { useState } from 'react'
 import { IoIosArrowDropdown } from "react-icons/io";
-import { BiPaperPlane } from "react-icons/bi";
 import { categories } from "../../constants/Addcategories";
 import { useDispatch, useSelector } from "react-redux";
-import "./addform.css";
-import { addExpense, newExpense, selectCategoryList } from "../../redux/index/index";
+import { AiOutlinePlus } from "react-icons/ai"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "./Successmodal";
-import { Form } from "react-router-dom";
+import { addExpense } from "../../store/expense";
+import { selectCategoryList } from "../../store/category/selectors";
+
 
 
 const AddForm = () => {
-
-  const db = usePouch() // get the database
-  const [input, setInput] = useState('')
-
   const [categoryOpen, setCategoryOpen] = useState(false);
   const cat = categories;
   const [title, setTitle] = useState("");
@@ -41,20 +36,7 @@ const AddForm = () => {
     setCategory(category);
     setCategoryOpen(false);
   };
-  const handleAdd = async (event: any) => {
-    event.preventDefault()
 
-    const doc = {
-      _id: new Date().toJSON(), // give the document a unique id
-      type: 'expense',
-      text: input,
-      done: false,
-    }
-
-    await db.put(doc) // put the new document into the database
-
-    setInput('')
-  }
   const handleSubmit = () => {
     if (title === "" || amount === 0 || !category) {
       const notify = () => toast("Please enter a valid a data");
@@ -68,24 +50,13 @@ const AddForm = () => {
       createdAt: new Date(),
     };
     dispatch(addExpense(data));
-    // dispatch(newExpense(data));
     setModalOpen(!modalOpen);
   };
 
 
-  // var todo={
-  //   id: new Date().toISOString(),
-  //   title: text,
-  //   completed:false
-  // };
-  // dblClick.put(todo,function callback(err,result){
-  //   if(!err){
-  //     console,log('Successfully posted a todo!')
-  //   }
-  // });
   return (
     <Box className="add-from">
-      <Form onSubmit={handleAdd}>
+      <FormControl>
         <Successmodal modalOpen={modalOpen} />
         <ToastContainer
           position="bottom-left"
@@ -95,50 +66,57 @@ const AddForm = () => {
           closeOnClick
         />
 
-        <HStack className="form-item">
-          <label>Title</label>
-          <Input
-            placeholder="Expenditure Name"
-            value={title}
-            onChange={(e) => handleTitle(e)}
-          />
-        </HStack>
-        <Box paddingTop="10px">
-          <HStack className="form-item">
-            <label>Amountरु</label>
-            <Input
-              className="amount-input"
-              placeholder="Enter Amount"
-              value={amount}
-              onChange={(e) => handleAmount(e)}
-            />
-          </HStack>
-        </Box>
+
+        <FormLabel >Title</FormLabel>
+        <Input
+          width='300px'
+          placeholder="Expenditure Name"
+          value={title}
+          onChange={(e) => handleTitle(e)}
+        />
+
+
+
+
+
+        <FormLabel paddingRight='7px'>Amountरु</FormLabel>
+        <Input
+          className="amount-input"
+          placeholder="Enter Amount"
+          width='300px'
+          value={amount}
+          onChange={(e) => handleAmount(e)}
+        />
+
+
 
 
         {/* Category */}
-        <Box className="category-container-parent">
+        <Box className="category-container-parent" border='1px solid white' borderRadius='5px' marginTop='15px' width='300px' >
           <Box className="category" >
             <Box
+
+              backgroundColor='transparent'
+              width='300px'
               className="category-dropdown"
               cursor="pointer"
               display="flex"
               onClick={() => setCategoryOpen(!categoryOpen)}
             >
-              <Box display="flex" backgroundColor='lightgray' padding="2px 12px"
-              >
-                <Text border-radius="6px">{category ? category?.title : "Category"}</Text>
-                <IoIosArrowDropdown style={{ alignItems: "center" }} />
-              </Box>
+
+
+              <FormLabel padding='3px'>{category ? category?.title : "Category"}</FormLabel>
+              <IoIosArrowDropdown style={{ alignItems: "center" }} />
+
             </Box>
 
 
             {/* categoryopen wala code */}
             {categoryOpen && (
-              <Box className="category-container">
+              <Box className="category-container" width='250px'>
                 {categoryList.map((category: any) => (
                   <Box
-                    backgroundColor="yellow.200"
+
                     className="category-item"
                     style={{
                       borderRight: `5px solid ${category.color}`,
@@ -157,7 +135,7 @@ const AddForm = () => {
                 ))}
                 {cat.map((category: any) => (
                   <Box
-                    backgroundColor="yellow.200"
+
                     className="category-item"
                     style={{
                       borderRight: `5px solid ${category.color}`,
@@ -180,22 +158,26 @@ const AddForm = () => {
         </Box>
 
 
-        <Box alignItems='center' cursor="pointer"
-          className="Form-add-button" paddingTop="20px" paddingLeft="730px">
-          <Button
-            display="flex"
-            onClick={handleSubmit}
-            border="1px solid black"
-            padding="2px 8px"
-            borderRadius="6px"
-            cursor="pointer"
-          >
-            <Text cursor="pointer">Add </Text >
-            <BiPaperPlane />
-          </Button>
+        <Box
+          className="Form-add-button" paddingTop="50px" paddingLeft="210px" color="white">
+          <Stack direction='row' spacing={4}>
+            <Button colorScheme='blue'
+
+              display="flex"
+              onClick={handleSubmit}
+              border="1px solid black"
+              padding="2px 8px"
+              borderRadius="6px"
+              cursor="pointer"
+              color="white" leftIcon={<AiOutlinePlus />}
+              variant='solid'>
+              Add
+            </Button>
+
+          </Stack>
         </Box>
-      </Form>
-    </Box>
+      </FormControl >
+    </Box >
   );
 };
 

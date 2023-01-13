@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Text } from "@chakra-ui/react";
 import { AiOutlineHome } from "react-icons/ai";
 import Modal from "react-modal"
@@ -16,7 +15,7 @@ const Categorysucess = (props: any) => {
             bottom: "auto",
             marginRight: "-50%",
             transform: "translate(-50%, -50%)",
-            backgroundColor: "yellow",
+            backgroundColor: "#09b0ed",
             borderRadius: "12px",
         },
     };
@@ -35,7 +34,7 @@ const Categorysucess = (props: any) => {
                     <Box
                         display="flex"
                         className="take-home-button"
-                        border="1px solid black"
+                        border="1px solid white"
                         padding="4px 8px"
                         borderRadius="6px"
                         justifyContent="center"

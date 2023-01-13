@@ -4,27 +4,23 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
 import "./App.css";
+import AppShell from "./components/app-shell";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header";
-import { store } from "./redux/store";
+import { store } from "./store";
+import { AppTheme } from "./theme";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={AppTheme}>
     <Provider store={store}>
-      <Box
-        alignItems="center"
-        background="#09b0ed"
-        height="900px"
-        width="70%"
-        marginLeft="250px"
-      >
+      <AppShell  >
         <Header />
         <App />
         <Footer />
-      </Box>
+      </AppShell>
     </Provider>
   </ChakraProvider>
 );
