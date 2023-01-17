@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteExpense } from "../../store/expense/slice";
 import { useNavigate } from 'react-router-dom';
 const Card = (props: any) => {
-  const { expense, notifySuccess, onEditToggle, id } = props;
+  const { expense, notifySuccess, id } = props;
   const time = moment(expense?.createdAt).fromNow();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -13,10 +13,7 @@ const Card = (props: any) => {
     notifySuccess();
     dispatch(deleteExpense(expense));
   };
-  // const handleEdit = (content: any) => {
-  //   onEditToggle(content)
-  //   console.log(content)
-  // };
+
   return (
     <Box
       color='black'

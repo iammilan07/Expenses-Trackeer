@@ -36,16 +36,15 @@ export const expenseSlice = createSlice({
             let { expense } = state;
             state.expense = expense.filter((item: any) => item.id !== action.payload.id);
             localStorage.setItem(storageKey, JSON.stringify(state.expense));
-            // state.expense();
         },
-        // editExpense: (state: any, action: any) => {
-        //     const { title } = state;
-        //     state.expense = title.map((item: any) =>
-        //         item.id === action.payload.id ? action.payload : item
-        //     )
-        //     localStorage.setItem(storageKey, JSON.stringify(state.expense));
-        //     state.expense();
-        // },
+        editExpense: (state: any, action: any) => {
+            const { title } = state;
+            state.expense = title.map((item: any) =>
+                item.id === action.payload.id ? action.payload : item
+            )
+            localStorage.setItem(storageKey, JSON.stringify(state.expense));
+
+        },
 
 
         // editExpense: (state: any, action: any) => {
@@ -56,17 +55,17 @@ export const expenseSlice = createSlice({
         //     )
         // },
 
-        editExpense: (state, action) => {
-            state = state.expense.filter((data: any) => {
-                if (data.id === action.payload.id) {
-                    return {
-                        ...data,
-                        item: action.payload.item,
-                    };
-                }
-                return data;
-            });
-        },
+        // editExpense: (state, action) => {
+        //     state = state.expense.filter((data: any) => {
+        //         if (data.id === action.payload.id) {
+        //             return {
+        //                 ...data,
+        //                 item: action.payload.item,
+        //             };
+        //         }
+        //         return data;
+        //     });
+        // },
 
 
 
