@@ -25,29 +25,53 @@ export const expenseSlice = createSlice({
             state.expense = newState
         },
 
-        deleteExpense: (state: any, action: any) => {
-            const { title } = action.payload
-            const newStatee = state.expense.filter(
-                (expense: any) => expense.title !== title);
-            localStorage.setItem(storageKey, JSON.stringify(newStatee));
-            state.expense = newStatee;
+        // deleteExpense: (state: any, action: any) => {
+        //     const { title } = action.payload
+        //     const newStatee = state.expense.filter(
+        //         (expense: any) => expense.title !== title);
+        //     localStorage.setItem(storageKey, JSON.stringify(newStatee));
+        //     state.expense = newStatee;
+        // },
+        deleteExpense: (state, action) => {
+            let { expense } = state;
+            state.expense = expense.filter((item: any) => item.id !== action.payload.id);
+            localStorage.setItem(storageKey, JSON.stringify(state.expense));
+            // state.expense();
+        },
+        // editExpense: (state: any, action: any) => {
+        //     const { title } = state;
+        //     state.expense = title.map((item: any) =>
+        //         item.id === action.payload.id ? action.payload : item
+        //     )
+        //     localStorage.setItem(storageKey, JSON.stringify(state.expense));
+        //     state.expense();
+        // },
+
+
+        // editExpense: (state: any, action: any) => {
+        //     let { expense } = state;
+        //     console.log(expense, state, action)
+        //     state.expense = expense.map((item: any) =>
+        //         item.title === action.payload.title ? action.payload : item
+        //     )
+        // },
+
+        editExpense: (state, action) => {
+            state = state.expense.filter((data: any) => {
+                if (data.id === action.payload.id) {
+                    return {
+                        ...data,
+                        item: action.payload.item,
+                    };
+                }
+                return data;
+            });
         },
 
-        editExpense: (state: any, action: any) => {
-            let { expense } = state;
-            state.expense = expense.map((item: any) =>
-                item.id === action.payload.id ? action.payload : item
-            )
-        },
-        searchExpense: (state: any, action: any) => {
-            const { query } = action;
-            return {
-                ...state,
-                query,
-            };
-        },
+
+
     },
 });
 
-export const { addExpense, deleteExpense, editExpense, searchExpense } = expenseSlice.actions;
+export const { addExpense, deleteExpense, editExpense } = expenseSlice.actions;
 export default expenseSlice.reducer;

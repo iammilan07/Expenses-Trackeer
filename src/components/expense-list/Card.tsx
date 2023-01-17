@@ -1,24 +1,27 @@
 import moment from "moment/moment";
 import { Box, HStack, Image, Text } from "@chakra-ui/react";
-import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { deleteExpense } from "../../store/expense";
+import { deleteExpense } from "../../store/expense/slice";
+import { useNavigate } from 'react-router-dom';
 const Card = (props: any) => {
-  const { expense, notifySuccess } = props;
+  const { expense, notifySuccess, onEditToggle, id } = props;
   const time = moment(expense?.createdAt).fromNow();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = () => {
     notifySuccess();
     dispatch(deleteExpense(expense));
   };
-  // const handleEdit = () => {
-  //   dispatch(editExpense(expense))
-  // }
-
+  // const handleEdit = (content: any) => {
+  //   onEditToggle(content)
+  //   console.log(content)
+  // };
   return (
-    <Box color='black'
-      className="card"
-      borderRight={`6px solid ${expense?.category?.color}`}
+    <Box
+      color='black'
+      width='350px'
+      borderRight={`6px solexpense ${expense?.category?.color}`}
       backgroundColor="white"
       padding="12px"
       margin="2px 0px"
@@ -26,6 +29,7 @@ const Card = (props: any) => {
       justifyContent="space-between"
       alignItems="center"
     >
+
       <Box className="card-image-container" >
         <Image
           src={expense?.category?.icon}
@@ -65,9 +69,10 @@ const Card = (props: any) => {
             <AiOutlineDelete onClick={handleDelete} />
           </Text>
 
-          {/* <Text cursor="pointer" className="delete-icon" fontSize="16px" >
-            <AiOutlineEdit onClick={handleEdit} />
-          </Text> */}
+          <Text cursor="pointer" className="edit-icon" fontSize="16px" >
+            <AiOutlineEdit onClick={() => navigate(`/edit-expense/${id}`)} />
+          </Text>
+
         </HStack>
       </Box>
 

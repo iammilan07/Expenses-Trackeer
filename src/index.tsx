@@ -1,13 +1,9 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
-import "./App.css";
 import AppShell from "./components/app-shell";
-import Footer from "./components/footer/Footer";
-import Header from "./components/header";
-import { store } from "./store";
+import { store } from "./store/store";
 import { AppTheme } from "./theme";
 
 const root = ReactDOM.createRoot(
@@ -16,10 +12,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <ChakraProvider theme={AppTheme}>
     <Provider store={store}>
-      <AppShell  >
-
+      <AppShell>
         <App />
-
       </AppShell>
     </Provider>
   </ChakraProvider>

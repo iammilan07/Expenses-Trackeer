@@ -10,15 +10,11 @@ const Footer = () => {
   return (
     <Box position="sticky" bottom="0">
       <Box
-        // width="100%"
-        marginTop='100px'
+        width="100%"
+        marginTop='100%'
         paddingLeft='85px'
-
-
-
         justifyContent="center"
         alignItems="center"
-
       >
         <Box border='1px solid black' borderRadius='10px' width='200px' backgroundColor='white'>
           <Tabs justifyContent='space-between' variant='soft-rounded' colorScheme='green' display='flex'>

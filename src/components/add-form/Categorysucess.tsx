@@ -3,8 +3,6 @@ import { AiOutlineHome } from "react-icons/ai";
 import Modal from "react-modal"
 import { Link } from "react-router-dom";
 
-
-
 const Categorysucess = (props: any) => {
     const { modalOpen } = props;
     const customStyles = {
@@ -19,6 +17,7 @@ const Categorysucess = (props: any) => {
             borderRadius: "12px",
         },
     };
+
     return (
         <Modal isOpen={modalOpen} style={customStyles}>
             <Box

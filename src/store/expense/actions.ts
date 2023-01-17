@@ -13,27 +13,18 @@ export const removeExpense = (expense: any): any => async (dispatch: any, getSta
         await expenseDB.remove(expense._id, expense._rev)
         await dispatch(fromSlice.deleteExpense(expense))
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
-
 export const addExpense = (expense: any): any => (dispatch: any) => {
     dispatch(fromSlice.addExpense(expense))
 };
-
-// export const addCategory = (category: any): any => (dispatch: any) => {
-//     dispatch(fromSlice.addCategory(category))
-// };
-
-export const deleteExpense = (item: any): any => (dispatch: any) => {
-    dispatch(fromSlice.deleteExpense(item))
+export const deleteExpense = (id: any): any => (dispatch: any) => {
+    dispatch(fromSlice.deleteExpense(id))
 };
 
 export const editExpense = (expense: any): any => (dispatch: any) => {
+    // console.log(expense)
     dispatch(fromSlice.editExpense(expense))
 }
 
-export const searchExpense = (query: any): any => (dispatch: any) => {
-    dispatch(fromSlice.searchExpense(query))
-
-};

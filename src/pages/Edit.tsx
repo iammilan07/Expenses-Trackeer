@@ -9,13 +9,13 @@ const Edit = (props: any) => {
     const params = useParams()
     const id = params.id
     const getEmployeeById = (id: any) => {
-        const expenses: any = props.expense;
+        const expenses: any = totalExpense();
         const expense = expenses.find((expense: any) => expense.id === id);
         return expense;
 
     };
     const editEmployee = (id: any, newExpense: any) => {
-        let expenses = props.expense;
+        let expenses = totalExpense();
         expenses = expenses.filter((expense: any) => expense.id !== id);
         expenses.push(newExpense);
         localStorage["expenses"] = JSON.stringify(expenses);

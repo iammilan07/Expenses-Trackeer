@@ -17,6 +17,7 @@ const Successmodal = (props: any) => {
       borderRadius: "12px",
     },
   };
+
   return (
     <Modal isOpen={modalOpen} style={customStyles}>
       <Box
@@ -27,7 +28,6 @@ const Successmodal = (props: any) => {
 
       >
         <label>Expense Added Successfully</label>
-
         <Link to="/">
           <Box
             display="flex"
@@ -37,7 +37,6 @@ const Successmodal = (props: any) => {
             borderRadius="6px"
             justifyContent="center"
             alignItems="center"
-
           >
             <Box
               marginRight="6px"

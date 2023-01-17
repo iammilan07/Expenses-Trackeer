@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Image, Input, Stack, } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, HStack, Input, Stack, } from "@chakra-ui/react";
 import { useState } from 'react'
 import { IoIosArrowDropdown } from "react-icons/io";
 import { categories } from "../../constants/Addcategories";
@@ -10,9 +10,10 @@ import Successmodal from "./Successmodal";
 import { addExpense } from "../../store/expense";
 import { selectCategoryList } from "../../store/category/selectors";
 
-
-
 const AddForm = () => {
+  let u = Date.now().toString(16) + Math.random().toString(16) + "0".repeat(16);
+  let id = [u.substr(0, 8), "4000-8" + u.substr(13, 3)].join("-");
+  console.log("id", id)
   const [categoryOpen, setCategoryOpen] = useState(false);
   const cat = categories;
   const [title, setTitle] = useState("");
@@ -21,6 +22,7 @@ const AddForm = () => {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const categoryList = useSelector(selectCategoryList)
+
   const handleTitle = (e: any) => {
     setTitle(e.target.value);
   };
@@ -36,7 +38,6 @@ const AddForm = () => {
     setCategory(category);
     setCategoryOpen(false);
   };
-
   const handleSubmit = () => {
     if (title === "" || amount === 0 || !category) {
       const notify = () => toast("Please enter a valid a data");
@@ -44,6 +45,7 @@ const AddForm = () => {
       return;
     }
     const data = {
+      id,
       title,
       amount,
       category,
@@ -52,7 +54,6 @@ const AddForm = () => {
     dispatch(addExpense(data));
     setModalOpen(!modalOpen);
   };
-
 
   return (
     <Box className="add-from">
@@ -65,58 +66,37 @@ const AddForm = () => {
           newestOnTop={false}
           closeOnClick
         />
-
-
         <FormLabel >Title</FormLabel>
         <Input
-          width='300px'
+          width='350px'
           placeholder="Expenditure Name"
           value={title}
           onChange={(e) => handleTitle(e)}
         />
-
-
-
-
-
         <FormLabel paddingRight='7px'>Amountरु</FormLabel>
         <Input
           className="amount-input"
           placeholder="Enter Amount"
-          width='300px'
+          width='350px'
           value={amount}
           onChange={(e) => handleAmount(e)}
         />
-
-
-
-
         {/* Category */}
-        <Box className="category-container-parent" border='1px solid white' borderRadius='5px' marginTop='15px' width='300px' >
-          <Box className="category" >
-            <Box
-
+        <Box className="category-container-parent" border='1px solid white' borderRadius='5px' marginTop='15px' width='350px' >
+          <Box className="category">
+            <HStack
               backgroundColor='transparent'
-              width='300px'
-              className="category-dropdown"
               cursor="pointer"
-              display="flex"
               onClick={() => setCategoryOpen(!categoryOpen)}
             >
-
-
-              <FormLabel padding='3px'>{category ? category?.title : "Category"}</FormLabel>
+              <FormLabel paddingLeft='15px' paddingRight='13.5rem'>{category ? category?.title : "Category"}</FormLabel>
               <IoIosArrowDropdown style={{ alignItems: "center" }} />
-
-            </Box>
-
-
+            </HStack>
             {/* categoryopen wala code */}
             {categoryOpen && (
               <Box className="category-container" width='250px'>
                 {categoryList.map((category: any) => (
                   <Box
-
                     className="category-item"
                     style={{
                       borderRight: `5px solid ${category.color}`,
@@ -125,17 +105,18 @@ const AddForm = () => {
                     onClick={() => handleCategory(category)}
                   >
                     <label>{category.title}</label>
-                    <Image
+                    {/* <Image
                       cursor="pointer"
                       height="20px"
                       src={category.icon}
                       alt={category.title}
-                    />
+                    /> */}
                   </Box>
                 ))}
                 {cat.map((category: any) => (
                   <Box
-
+                    padding='10px'
+                    justifyContent="space-between"
                     className="category-item"
                     style={{
                       borderRight: `5px solid ${category.color}`,
@@ -143,26 +124,23 @@ const AddForm = () => {
                     key={category.id}
                     onClick={() => handleCategory(category)}
                   >
-                    <label>{category.title}</label>
-                    <Image
+                    <label style={{ cursor: 'pointer' }}>{category.title}</label>
+                    {/* <Image
                       cursor="pointer"
                       height="20px"
                       src={category.icon}
                       alt={category.title}
-                    />
+                    /> */}
                   </Box>
                 ))}
               </Box>
             )}
           </Box>
         </Box>
-
-
         <Box
           className="Form-add-button" paddingTop="50px" paddingLeft="210px" color="white">
           <Stack direction='row' spacing={4}>
             <Button colorScheme='blue'
-
               display="flex"
               onClick={handleSubmit}
               border="1px solid black"
@@ -173,7 +151,6 @@ const AddForm = () => {
               variant='solid'>
               Add
             </Button>
-
           </Stack>
         </Box>
       </FormControl >
