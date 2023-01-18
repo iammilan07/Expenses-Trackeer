@@ -125,7 +125,7 @@ const Details = () => {
           Selected date: {date.toLocaleDateString()}
         </Box>
       </Box>
-      <Box width="280px" marginLeft="40px">
+      <Box>
         <Newexpenselist date={date.toLocaleDateString()} />
       </Box>
     </Box>

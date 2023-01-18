@@ -7,7 +7,7 @@ import { store } from "./store/store";
 import { AppTheme } from "./theme";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <ChakraProvider theme={AppTheme}>
@@ -18,4 +18,3 @@ root.render(
     </Provider>
   </ChakraProvider>
 );
-

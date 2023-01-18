@@ -8,12 +8,12 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Successmodal from "../components/add-form/Editsucess";
+import Successmodal from "../../components/add-form/Editsucess";
 import { useEffect, useState } from "react";
 import { AiOutlineHome, AiOutlinePlus } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import * as fromExpenseStore from "../store/expense";
+import * as fromExpenseStore from "../../store/expense";
 const Edit = () => {
   //params
   const params = useParams();

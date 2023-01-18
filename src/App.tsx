@@ -6,8 +6,7 @@ import Details from "./pages/details/Details";
 import Header from "./components/header";
 import Footer from "./components/footer/Footer";
 import Error from "./pages/error/Error";
-import Edit from "./pages/Edit";
-
+import Edit from "./pages/editExpense/Edit";
 
 function App() {
   return (
@@ -18,7 +17,7 @@ function App() {
         <Route path="home" element={<Home />} />
 
         <Route path="add-expense" element={<Addexpense />} />
-        <Route path='/edit-expense/:id' element={<Edit />} />
+        <Route path="/edit-expense/:id" element={<Edit />} />
 
         <Route path="details" element={<Details />} />
         <Route path="add-category" element={<Addcategory />} />
@@ -26,6 +25,6 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
-  )
+  );
 }
 export default App;
