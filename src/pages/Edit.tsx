@@ -1,45 +1,124 @@
-import React from 'react'
-import { useParams } from 'react-router-dom';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  HStack,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import Successmodal from "../components/add-form/Editsucess";
+import { useEffect, useState } from "react";
+import { AiOutlineHome, AiOutlinePlus } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import * as fromExpenseStore from "../store/expense";
-import { useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { Button } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
-import { addExpense, editExpense } from '../store/expense';
 const Edit = () => {
-    const dispatch = useDispatch()
-    const totalExpense = useSelector(fromExpenseStore.selectExpenseListData)
-    const { register, handleSubmit, formState: { errors } } = useForm()
-    // const { expense } = props;
-    const params = useParams()
-    const id = params.id
-    const getExpenseById = (id: any) => {
-        const expenses: any = totalExpense();
-        const expense = expenses.find((expense: any) => expense.id === id);
-        return expense;
-    };
-    const editExpensee = (id: any, newExpense: any) => {
-        let expenses = totalExpense();
-        expenses = expenses.filter((expense: any) => expense.id !== id);
-        expenses.push(newExpense);
-        localStorage["expenses"] = JSON.stringify(expenses);
-    };
-    const edit = (e: any) => {
-        e.preventDefault();
-        dispatch(editExpense(id))
-    }
-    return (
-        <div>
-            <form onSubmit={handleSubmit(edit)}>
-                <label>Edit Your Expenses</label>
-                <input style={{ color: "white" }}{...register("content", { maxLength: 20, })} />
-                {errors?.content?.type === "maxLength" && <p style={{ color: "red" }}>You cannot add more than 20 letters!! ⚠</p>}
-                <Button color="black" type="submit" className="button" >
-                    Edit
-                </Button>
-            </form>
-        </div>
-    )
-}
+  //params
+  const params = useParams();
+  const ids = params.id;
 
-export default Edit
+  //dispatch
+  const dispatch = useDispatch();
+
+  //selectors
+  const totalExpenses = useSelector(fromExpenseStore.selectExpenseListData);
+
+  //state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [expenseState, setExpenseState] = useState({
+    title: "",
+    amount: 0,
+  });
+
+  //functions
+  const onChange = (e: any) => {
+    setExpenseState({ ...expenseState, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    let foundExpenseData = {};
+    Object.values(totalExpenses).forEach((totalExpense: any) => {
+      foundExpenseData = totalExpense.find(
+        (expense: any) => expense.id === ids
+      );
+    });
+    setExpenseState({ ...expenseState, ...foundExpenseData });
+  }, [totalExpenses]);
+
+  const handleSubmit = () => {
+    dispatch(fromExpenseStore.editExpense(expenseState));
+    setModalOpen(!modalOpen);
+  };
+
+  return (
+    <div>
+      <Box>
+        <Link to="/">
+          <Button
+            width="65px"
+            height="30px"
+            fontSize="12px"
+            border="1px solid black"
+            borderRadius="6px"
+            backgroundColor="cyan.400"
+            marginLeft="280px"
+          >
+            <HStack justifyContent="center" alignItems="center">
+              <AiOutlineHome />
+              <Text>Home</Text>
+            </HStack>
+          </Button>
+        </Link>
+        <FormControl>
+          <Successmodal modalOpen={modalOpen} />
+          <FormLabel>Title</FormLabel>
+          <Input
+            width="350px"
+            name="title"
+            placeholder="Expenditure Name"
+            value={expenseState.title}
+            onChange={onChange}
+          />
+          <FormLabel paddingRight="7px">Amountरु</FormLabel>
+          <Input
+            className="amount-input"
+            name="amount"
+            placeholder="Enter Amount"
+            width="350px"
+            value={expenseState.amount}
+            onChange={onChange}
+          />
+          {/* Category */}
+
+          <Box
+            className="Form-add-button"
+            paddingTop="50px"
+            paddingLeft="210px"
+            color="white"
+          >
+            <Stack direction="row" spacing={4}>
+              <Button
+                colorScheme="blue"
+                display="flex"
+                onClick={handleSubmit}
+                border="1px solid black"
+                padding="2px 8px"
+                borderRadius="6px"
+                cursor="pointer"
+                color="white"
+                leftIcon={<AiOutlinePlus />}
+                variant="solid"
+              >
+                Edit
+              </Button>
+            </Stack>
+          </Box>
+        </FormControl>
+      </Box>
+    </div>
+  );
+};
+
+export default Edit;

@@ -8,6 +8,10 @@ const initialList = () => {
         expenses = JSON.parse(list);
     }
     return expenses;
+    // const localStorageExpense = window.localStorage.getItem('expenseList');
+    // if (localStorageExpense) return JSON.parse(localStorageExpense);
+    // window.localStorage.setItem('expenseList', JSON.stringify([]));
+    // return []
 };
 
 const initialState = {
@@ -15,7 +19,7 @@ const initialState = {
     query: "",
 };
 
-export const expenseSlice = createSlice({
+const expenseSlice = createSlice({
     name: "expense",
     initialState,
     reducers: {
@@ -25,50 +29,31 @@ export const expenseSlice = createSlice({
             state.expense = newState
         },
 
-        // deleteExpense: (state: any, action: any) => {
-        //     const { title } = action.payload
-        //     const newStatee = state.expense.filter(
-        //         (expense: any) => expense.title !== title);
-        //     localStorage.setItem(storageKey, JSON.stringify(newStatee));
-        //     state.expense = newStatee;
-        // },
-        deleteExpense: (state, action) => {
-            let { expense } = state;
-            state.expense = expense.filter((item: any) => item.id !== action.payload.id);
-            localStorage.setItem(storageKey, JSON.stringify(state.expense));
-        },
-        editExpense: (state: any, action: any) => {
-            const { title } = state;
-            state.expense = title.map((item: any) =>
-                item.id === action.payload.id ? action.payload : item
-            )
-            localStorage.setItem(storageKey, JSON.stringify(state.expense));
-
+        deleteExpense: (state: any, action: any) => {
+            const newStatee = state.expense.filter((item: any) => item.id !== action.payload.id);
+            localStorage.setItem(storageKey, JSON.stringify(newStatee));
+            state.expense = newStatee;
         },
 
-
-        // editExpense: (state: any, action: any) => {
+        // deleteExpense: (state, action) => {
         //     let { expense } = state;
-        //     console.log(expense, state, action)
-        //     state.expense = expense.map((item: any) =>
-        //         item.title === action.payload.title ? action.payload : item
-        //     )
+        //     state.expense = expense.filter((item: any) => item.id !== action.payload.id);
+        //     localStorage.setItem(storageKey, JSON.stringify(state.expense));
+        //     state.expense()
         // },
 
-        // editExpense: (state, action) => {
-        //     state = state.expense.filter((data: any) => {
-        //         if (data.id === action.payload.id) {
-        //             return {
-        //                 ...data,
-        //                 item: action.payload.item,
-        //             };
-        //         }
-        //         return data;
-        //     });
-        // },
-
-
-
+        editExpense: (state, action) => {
+            const expense: any = window.localStorage.getItem('expense-list');
+            const parsedExpenseDataFromStorage = JSON.parse(expense)
+            const filteredExpenseData = parsedExpenseDataFromStorage.map((expenseData: any) => {
+                if (expenseData.id === action.payload.id) {
+                    return action.payload
+                }
+                return expenseData
+            })
+            localStorage.setItem(storageKey, JSON.stringify(filteredExpenseData))
+            state.expense = filteredExpenseData
+        }
     },
 });
 

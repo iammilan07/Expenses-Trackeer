@@ -3,9 +3,11 @@ import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { deleteExpense } from "../../store/expense/slice";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 const Card = (props: any) => {
   const { expense, notifySuccess, id } = props;
+
   const time = moment(expense?.createdAt).fromNow();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,8 +18,8 @@ const Card = (props: any) => {
 
   return (
     <Box
-      color='black'
-      width='350px'
+      color="black"
+      width="350px"
       borderRight={`6px solexpense ${expense?.category?.color}`}
       backgroundColor="white"
       padding="12px"
@@ -26,25 +28,24 @@ const Card = (props: any) => {
       justifyContent="space-between"
       alignItems="center"
     >
-
-      <Box className="card-image-container" >
+      <Box className="card-image-container">
         <Image
           src={expense?.category?.icon}
           alt={expense?.category?.title}
           height="40px"
         />
       </Box>
-      < Box
+      <Box
         className="card-info"
         display="flex"
         flex="1"
         flexDirection="column"
         marginLeft="12px"
       >
-        <Text className="card-title" fontSize="20px" >
+        <Text className="card-title" fontSize="20px">
           {expense?.title}
         </Text>
-        < Text className="card-time" color="gray" fontSize="12px" >
+        <Text className="card-time" color="gray" fontSize="12px">
           {time}
         </Text>
       </Box>
@@ -56,23 +57,25 @@ const Card = (props: any) => {
         justifyContent="space-between"
       >
         <Box>
-          <Text className="card-amount" fontSize="20px" fontWeight="500" >
+          <Text className="card-amount" fontSize="20px" fontWeight="500">
             RS {expense?.amount}
           </Text>
         </Box>
 
         <HStack>
-          <Text cursor="pointer" className="delete-icon" fontSize="16px" >
+          <Text cursor="pointer" className="delete-icon" fontSize="16px">
             <AiOutlineDelete onClick={handleDelete} />
           </Text>
 
-          <Text cursor="pointer" className="edit-icon" fontSize="16px" >
-            <AiOutlineEdit onClick={() => navigate(`/edit-expense/${id}`)} />
+          <Text cursor="pointer" className="edit-icon" fontSize="16px">
+            <AiOutlineEdit
+              onClick={() => {
+                navigate(`/edit-expense/${id}`);
+              }}
+            />
           </Text>
-
         </HStack>
       </Box>
-
     </Box>
   );
 };

@@ -39,6 +39,7 @@ const Addcategory = () => {
             {errors?.color?.type === "pattern" && (
                 <p className="msg">Alphabetical characters only</p>
             )}
+
             <Box>
                 <Box
                     className="Form-add-button" color="white">

@@ -13,7 +13,6 @@ import { selectCategoryList } from "../../store/category/selectors";
 const AddForm = () => {
   let u = Date.now().toString(16) + Math.random().toString(16) + "0".repeat(16);
   let id = [u.substr(0, 8), "4000-8" + u.substr(13, 3)].join("-");
-  console.log("id", id)
   const [categoryOpen, setCategoryOpen] = useState(false);
   const cat = categories;
   const [title, setTitle] = useState("");
@@ -141,6 +140,7 @@ const AddForm = () => {
           className="Form-add-button" paddingTop="50px" paddingLeft="210px" color="white">
           <Stack direction='row' spacing={4}>
             <Button colorScheme='blue'
+
               display="flex"
               onClick={handleSubmit}
               border="1px solid black"
