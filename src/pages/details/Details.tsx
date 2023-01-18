@@ -118,7 +118,7 @@ const Details = () => {
           </Text>
         </Box>
       </Box>
-      <Box className="app" paddingTop="50px" width="300px">
+      <Box className="app" paddingTop="50px" width="300px" color="black">
         <Text className="header">Items According to the date!!</Text>
         <Calendar onChange={setDate} value={date} />
         <Box className="text-center">
