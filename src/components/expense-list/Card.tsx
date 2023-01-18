@@ -19,7 +19,7 @@ const Card = (props: any) => {
   return (
     <Box
       color="black"
-      width="350px"
+      width="330px"
       borderRight={`6px solexpense ${expense?.category?.color}`}
       backgroundColor="white"
       padding="12px"

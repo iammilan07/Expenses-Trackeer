@@ -81,7 +81,7 @@ const Edit = () => {
             value={expenseState.title}
             onChange={onChange}
           />
-          <FormLabel paddingRight="7px">Amountरु</FormLabel>
+          {/* <FormLabel paddingRight="7px">Amountरु</FormLabel>
           <Input
             className="amount-input"
             name="amount"
@@ -89,8 +89,8 @@ const Edit = () => {
             width="350px"
             value={expenseState.amount}
             onChange={onChange}
-          />
-          {/* Category */}
+          /> */}
+          {/* AddButton */}
 
           <Box
             className="Form-add-button"

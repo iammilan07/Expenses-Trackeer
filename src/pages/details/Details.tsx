@@ -118,14 +118,22 @@ const Details = () => {
           </Text>
         </Box>
       </Box>
-      <Box className="app" paddingTop="50px" width="300px" color="black">
+      <Box
+        className="app"
+        alignItems="center"
+        paddingLeft="20px"
+        marginRight="20px"
+        paddingTop="50px"
+        width="300px"
+      >
         <Text className="header">Items According to the date!!</Text>
         <Calendar onChange={setDate} value={date} />
         <Box className="text-center">
           Selected date: {date.toLocaleDateString()}
         </Box>
       </Box>
-      <Box>
+
+      <Box marginLeft="40px">
         <Newexpenselist date={date.toLocaleDateString()} />
       </Box>
     </Box>
