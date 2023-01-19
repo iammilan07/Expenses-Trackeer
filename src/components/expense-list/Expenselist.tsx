@@ -1,5 +1,5 @@
 import * as fromExpenseStore from "../../store/expense";
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 import Card from "./Card";
 import { useSelector } from "react-redux";

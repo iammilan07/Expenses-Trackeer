@@ -6,7 +6,7 @@ interface AppShellProps {
 const AppShell = ({ children }: AppShellProps) => {
   return (
     <Container
-      border="1px solid white"
+      // border="1px solid white"
       borderRadius="5px"
       maxW="sm"
       bg="gray.900"

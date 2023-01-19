@@ -83,7 +83,9 @@ const AddForm = () => {
           value={title}
           onChange={(e) => handleTitle(e)}
         />
-        <FormLabel paddingRight="7px">Amountरु</FormLabel>
+        <FormLabel paddingRight="7px">
+          Amountरु (neg = expense, positive = income)
+        </FormLabel>
         <Input
           className="amount-input"
           placeholder="Enter Amount"

@@ -132,7 +132,7 @@ const Details = () => {
         <Text className="header">Items According to the date!!</Text>
         <Calendar onChange={setDate} value={date} />
         <Box className="text-center">
-          Selected date: {date.toLocaleDateString()}
+          Expense list of: {date.toLocaleDateString()}
         </Box>
       </Box>
 

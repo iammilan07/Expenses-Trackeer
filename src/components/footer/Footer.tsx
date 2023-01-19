@@ -51,7 +51,7 @@ const Footer = () => {
         </Box>
       </Box>
       <Box textAlign="center" marginLeft="20px">
-        <Text>Made with ❤️ in Reactredux!!</Text>
+        <Text visibility="hidden">Made with ❤️ in Reactredux!!</Text>
       </Box>
     </Box>
   );
