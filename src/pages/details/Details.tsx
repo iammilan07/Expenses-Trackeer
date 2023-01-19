@@ -136,7 +136,7 @@ const Details = () => {
         </Box>
       </Box>
 
-      <Box marginLeft="40px">
+      <Box marginLeft="10px">
         <Newexpenselist date={date.toLocaleDateString()} />
       </Box>
     </Box>
