@@ -5,7 +5,6 @@ import Marquee from "react-fast-marquee";
 const Announcement = () => {
   return (
     <Box
-      //   background="#000"
       color="#fff"
       display="flex"
       justify-content="space-around"
@@ -22,7 +21,7 @@ const Announcement = () => {
           margin-right=" 50rem"
           paddingLeft="10rem"
         >
-          <Text fontSize="0.5rem" marginRight="10rem">
+          <Text fontSize="0.9rem" marginRight="10rem">
             Wellcome to Exp-Tracker!!
           </Text>
         </Box>
@@ -32,7 +31,7 @@ const Announcement = () => {
           margin-right=" 50rem"
           className="announcement-text text2"
         >
-          <Text fontSize="0.5rem">Track Your daily expenses!! </Text>
+          <Text fontSize="0.9rem">Track Your daily expenses!! </Text>
         </Box>
       </Marquee>
     </Box>

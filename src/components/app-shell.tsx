@@ -10,6 +10,9 @@ const AppShell = ({ children }: AppShellProps) => {
       maxW="sm"
       bg="gray.900"
       color="gray.100"
+      height="100%"
+      border-radius="50px"
+      box-shadow="20px 20px 60px #d9d900, -20px -20px 60px #ffff00"
     >
       {children}
     </Container>

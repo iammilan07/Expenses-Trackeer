@@ -22,7 +22,6 @@ export const selectMappedList = (state: any) => {
 
 
 export const selectExpenseListData = (state: any) => {
-
     let x: any = {}
     const mapped = state.expenseList.expense.map((item: any) => {
         return {
@@ -38,21 +37,16 @@ export const selectExpenseListData = (state: any) => {
             x[item.createdAt].push(item);
         }
     })
-
     let f: any = {};
-
     Object.keys(x).forEach((key: any) => {
         const expenseCloned = x[key];
-
         const total = expenseCloned.reduce((acc: any, curr: any) => {
             return acc + curr.amount
         }, 0)
-
         expenseCloned.push({
             title: 'Total',
             amount: total,
         })
-
         f[key] = expenseCloned
     })
     return f;
@@ -61,23 +55,18 @@ export const selectExpenseListData = (state: any) => {
 export const selectpiechart = (state: any) => {
     const data: any = []
     Object.entries(selectMappedList(state)).forEach(entry => {
-
         const [key, value]: any = entry;
         var total_amount_ofaday = 0
         value.forEach((element: any) => {
             total_amount_ofaday += element['amount']
         });
-
         data.push({ "name": key, "value": total_amount_ofaday })
     })
-
     return data
-
 };
 
 
 export const selectcategoryList = (state: any) => {
-
     let x: any = {}
     const mapped = state.expenseList.expense.map((item: any) => {
         return {
@@ -86,7 +75,6 @@ export const selectcategoryList = (state: any) => {
             category: (item.category.title),
         }
     })
-
     mapped.forEach((item: any) => {
         if (!x[item.category]) {
             x[item.category] = [];
@@ -101,15 +89,12 @@ export const selectcategoryList = (state: any) => {
 export const selectpiechartcat = (state: any) => {
     const data: any = []
     Object.entries(selectcategoryList(state)).forEach(entry => {
-
         const [key, value]: any = entry;
         var total_amount_ofaday = 0
         value.forEach((element: any) => {
             total_amount_ofaday += element['amount']
         });
-
         data.push({ "name": key, "value": total_amount_ofaday })
     })
-
     return data
 };

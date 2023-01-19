@@ -6,6 +6,7 @@ import { deleteExpense } from "../../store/expense/slice";
 import { useNavigate } from "react-router-dom";
 
 const Card = (props: any) => {
+  //destructuring props
   const { expense, notifySuccess, id } = props;
 
   const time = moment(expense?.createdAt).fromNow();

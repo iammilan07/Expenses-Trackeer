@@ -55,6 +55,7 @@ const Edit = () => {
   return (
     <div>
       <Box>
+        {/* homeButton */}
         <Link to="/">
           <Button
             width="65px"
@@ -71,6 +72,7 @@ const Edit = () => {
             </HStack>
           </Button>
         </Link>
+        {/* Form start from here*/}
         <FormControl>
           <Successmodal modalOpen={modalOpen} />
           <FormLabel>Title</FormLabel>
@@ -81,17 +83,6 @@ const Edit = () => {
             value={expenseState.title}
             onChange={onChange}
           />
-          {/* <FormLabel paddingRight="7px">Amountरु</FormLabel>
-          <Input
-            className="amount-input"
-            name="amount"
-            placeholder="Enter Amount"
-            width="350px"
-            value={expenseState.amount}
-            onChange={onChange}
-          /> */}
-          {/* AddButton */}
-
           <Box
             className="Form-add-button"
             paddingTop="50px"

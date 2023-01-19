@@ -14,9 +14,10 @@ const Expenselist = () => {
   const onEditToggle = (title: any) => {
     setState({ ...state, title });
   };
+
   return (
     <Box>
-      {totalExpense &&
+      {Object.keys(totalExpense).length > 0 ? (
         Object.keys(totalExpense).map((key: any) => {
           return (
             <Box key={key}>
@@ -42,7 +43,13 @@ const Expenselist = () => {
                 })}
             </Box>
           );
-        })}
+        })
+      ) : (
+        <Box textAlign="center" marginTop="30vh">
+          <Text as="b">Empty Expenses list!!</Text>
+          <Text>Please add some expenses...</Text>
+        </Box>
+      )}
     </Box>
   );
 };

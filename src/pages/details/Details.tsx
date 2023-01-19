@@ -14,10 +14,13 @@ import { useState } from "react";
 import Newexpenselist from "../../components/expense-list/Newexpenselist";
 
 const Details = () => {
+  //state
   const [date, setDate] = useState(new Date());
+  //selector
   const list = useSelector(selectExpenseList);
   const data = useSelector(selectpiechart);
   const data2 = useSelector(selectpiechartcat);
+  //piecharts
   const COLORS = ["red", "#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({

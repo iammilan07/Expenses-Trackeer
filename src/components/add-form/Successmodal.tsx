@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import { AiOutlineHome } from "react-icons/ai";
-import Modal from "react-modal"
+import Modal from "react-modal";
 import { Link } from "react-router-dom";
 
 const Successmodal = (props: any) => {
@@ -13,7 +13,7 @@ const Successmodal = (props: any) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "#09b0ed",
+      backgroundColor: "grey",
       borderRadius: "12px",
     },
   };
@@ -25,7 +25,6 @@ const Successmodal = (props: any) => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-
       >
         <label>Expense Added Successfully</label>
         <Link to="/">

@@ -8,10 +8,6 @@ const initialList = () => {
         expenses = JSON.parse(list);
     }
     return expenses;
-    // const localStorageExpense = window.localStorage.getItem('expenseList');
-    // if (localStorageExpense) return JSON.parse(localStorageExpense);
-    // window.localStorage.setItem('expenseList', JSON.stringify([]));
-    // return []
 };
 
 const initialState = {
@@ -34,13 +30,6 @@ const expenseSlice = createSlice({
             localStorage.setItem(storageKey, JSON.stringify(newStatee));
             state.expense = newStatee;
         },
-
-        // deleteExpense: (state, action) => {
-        //     let { expense } = state;
-        //     state.expense = expense.filter((item: any) => item.id !== action.payload.id);
-        //     localStorage.setItem(storageKey, JSON.stringify(state.expense));
-        //     state.expense()
-        // },
 
         editExpense: (state, action) => {
             const expense: any = window.localStorage.getItem('expense-list');
