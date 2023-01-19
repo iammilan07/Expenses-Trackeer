@@ -16,7 +16,6 @@ const Card = (props: any) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = () => {
-    alert("Expense Deleted");
     notifySuccessDelete();
     dispatch(deleteExpense(expense));
   };
