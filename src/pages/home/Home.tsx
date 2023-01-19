@@ -6,7 +6,7 @@ import { TotalExpense } from "../toalExpense/TotalExpense";
 const Home = () => {
   return (
     <Box>
-      <Balance />
+      {/* <Balance /> */}
       <Expenselist />
     </Box>
   );
