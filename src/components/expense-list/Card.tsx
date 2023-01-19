@@ -4,16 +4,20 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { deleteExpense } from "../../store/expense/slice";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Card = (props: any) => {
   //destructuring props
-  const { expense, notifySuccess, id } = props;
-
+  const { expense, id } = props;
+  const notifySuccessDelete = () =>
+    toast.success("Expense Deleted Successfully");
   const time = moment(expense?.createdAt).fromNow();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = () => {
-    notifySuccess();
+    alert("Expense Deleted");
+    notifySuccessDelete();
     dispatch(deleteExpense(expense));
   };
 
@@ -29,6 +33,13 @@ const Card = (props: any) => {
       justifyContent="space-between"
       alignItems="center"
     >
+      <ToastContainer
+        position="bottom-left"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+      />
       <Box className="card-image-container">
         <Image
           src={expense?.category?.icon}

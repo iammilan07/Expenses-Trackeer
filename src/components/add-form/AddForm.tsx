@@ -14,14 +14,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlus } from "react-icons/ai";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Successmodal from "./Successmodal";
+
 import { addExpense } from "../../store/expense";
 import { selectCategoryList } from "../../store/category/selectors";
 
 const AddForm = () => {
   let u = Date.now().toString(16) + Math.random().toString(16) + "0".repeat(16);
   let id = [u.substr(0, 8), "4000-8" + u.substr(13, 3)].join("-");
-
+  const notifySuccessAdd = () => toast.success("Expenses Added Successfully");
   //State
   const [categoryOpen, setCategoryOpen] = useState(false);
   const cat = categories;
@@ -63,12 +63,16 @@ const AddForm = () => {
     };
     dispatch(addExpense(data));
     setModalOpen(!modalOpen);
+    notifySuccessAdd();
+    setTitle("");
+    setAmount(0);
+    setCategory("");
   };
 
   return (
     <Box className="add-from">
       <FormControl>
-        <Successmodal modalOpen={modalOpen} />
+        {/* <Successmodal modalOpen={modalOpen} /> */}
         <ToastContainer
           position="bottom-left"
           autoClose={1500}

@@ -1,13 +1,11 @@
 import * as fromExpenseStore from "../../store/expense";
 import { Box, Text } from "@chakra-ui/react";
-import { toast } from "react-toastify";
 import Card from "./Card";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { ImFilesEmpty } from "react-icons/im";
 const Expenselist = () => {
   const totalExpense = useSelector(fromExpenseStore.selectExpenseListData);
-  const notifySuccess = () => toast.success("Expenses Deleted Successfully");
   const [state, setState] = useState({
     title: "",
   });
@@ -31,7 +29,6 @@ const Expenselist = () => {
                         onEditToggle={onEditToggle}
                         id={expense.id}
                         expense={expense}
-                        notifySuccess={notifySuccess}
                       />
                     );
                   else
