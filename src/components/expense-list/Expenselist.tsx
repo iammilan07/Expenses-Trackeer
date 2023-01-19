@@ -1,10 +1,10 @@
 import * as fromExpenseStore from "../../store/expense";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 import Card from "./Card";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-
+import { ImFilesEmpty } from "react-icons/im";
 const Expenselist = () => {
   const totalExpense = useSelector(fromExpenseStore.selectExpenseListData);
   const notifySuccess = () => toast.success("Expenses Deleted Successfully");
@@ -45,9 +45,12 @@ const Expenselist = () => {
           );
         })
       ) : (
-        <Box textAlign="center" marginTop="30vh">
-          <Text as="b">Empty Expenses list!!</Text>
-          <Text>Please add some expenses...</Text>
+        <Box marginTop="30vh" marginLeft="5vw" justifyContent="center">
+          <Box display="flex">
+            <Text as="b">Empty Expenses list!!</Text>
+            <ImFilesEmpty />
+          </Box>
+          <Text>Please add some expenses ...</Text>
         </Box>
       )}
     </Box>
