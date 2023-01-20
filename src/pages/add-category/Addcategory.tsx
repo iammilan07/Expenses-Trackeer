@@ -1,14 +1,14 @@
-import { background, Box, Button, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Button, Stack, Text } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
-import Successmodal from "../../components/add-form/Categorysucess";
 import { addCategory } from "../../store/category/slice";
 import { useForm } from "react-hook-form";
 import "../../assets/styles/SStyle.css";
 import { AiOutlinePlus } from "react-icons/ai";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Addcategory = () => {
+  const notifySuccessAdd = () => toast.success("Category added Successfully");
   //reacthookfrom
   const {
     register,
@@ -17,17 +17,22 @@ const Addcategory = () => {
   } = useForm();
   //dispatch
   const dispatch = useDispatch();
-  //state
-  const [modalOpen, setModalOpen] = useState(false);
+
   //function
   const onhandleSubmit = (data: any) => {
     dispatch(addCategory(data));
-    setModalOpen(!modalOpen);
+    notifySuccessAdd();
   };
 
   return (
     <form onSubmit={handleSubmit(onhandleSubmit)}>
-      <Successmodal modalOpen={modalOpen} />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+      />
       <Text>Add Category</Text>
       <Box marginTop="5px" backgroundColor="transparent" width="350px">
         <input

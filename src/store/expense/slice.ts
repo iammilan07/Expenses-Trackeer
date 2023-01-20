@@ -1,6 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { storageKey } from "../../constants";
+import { expenseDB } from "../../database";
 
+// const initialList = async () => {
+//     const list = localStorage.getItem("expense-list");
+//     let expenses = [];
+//     if (list) {
+//         expenses = JSON.parse(list);
+//     }
+//     return expenses;
+
+//     // const response = await expenseDB.get("expense-list");
+//     // let expenses: any = {};
+//     // if (response) {
+//     //     expenses = JSON.stringify(response);
+//     //     return expenses
+//     // }
+// };
 const initialList = () => {
     const list = localStorage.getItem("expense-list");
     let expenses = [];
@@ -11,19 +27,30 @@ const initialList = () => {
 };
 
 const initialState = {
-    expense: initialList(),
-    query: "",
+    // expense: initialList(),
+    expense: [],
 };
 
 const expenseSlice = createSlice({
     name: "expense",
     initialState,
     reducers: {
-        addExpense: (state, action) => {
-            const newState = [...state.expense, action.payload];
-            localStorage.setItem(storageKey, JSON.stringify(newState));
-            state.expense = newState
+        fetchExpense: (state: any, action: any) => {
+            state.expense = action.payload
         },
+
+        addExpense: (state: any, action: any) => {
+            const newList = [...state.expense, action.payload]
+            localStorage.setItem(storageKey, JSON.stringify(newList));
+            state.expense = newList
+        },
+        // addExpense: (state: any, action: any) => {
+        //     const newList = [...state.expense, action.payload]
+        //     expenseDB.put(JSON.stringify(newList))
+        //     state.expense = newList
+        // },
+
+
 
         deleteExpense: (state: any, action: any) => {
             const newStatee = state.expense.filter((item: any) => item.id !== action.payload.id);
@@ -46,5 +73,5 @@ const expenseSlice = createSlice({
     },
 });
 
-export const { addExpense, deleteExpense, editExpense } = expenseSlice.actions;
+export const { fetchExpense, addExpense, deleteExpense, editExpense } = expenseSlice.actions;
 export default expenseSlice.reducer;

@@ -1,17 +1,25 @@
+import { useState, useEffect } from "react";
 import * as fromExpenseStore from "../../store/expense";
 import { Box, Text } from "@chakra-ui/react";
 import Card from "./Card";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { ImFilesEmpty } from "react-icons/im";
+import { fetchExpense } from "../../store/expense/actions";
+
 const Expenselist = () => {
   const totalExpense = useSelector(fromExpenseStore.selectExpenseListData);
   const [state, setState] = useState({
     title: "",
   });
+  const dispatch = useDispatch();
+
   const onEditToggle = (title: any) => {
     setState({ ...state, title });
   };
+
+  useEffect(() => {
+    dispatch(fetchExpense());
+  }, []);
 
   return (
     <Box>

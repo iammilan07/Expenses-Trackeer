@@ -8,13 +8,16 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import Successmodal from "../../components/add-form/Editsucess";
 import { useEffect, useState } from "react";
 import { AiOutlineHome, AiOutlinePlus } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import * as fromExpenseStore from "../../store/expense";
+import { editExpense } from "../../store/expense/slice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Edit = () => {
+  const notifySuccessAdd = () => toast.success("Expenses Added Successfully");
   //params
   const params = useParams();
   const ids = params.id;
@@ -26,7 +29,7 @@ const Edit = () => {
   const totalExpenses = useSelector(fromExpenseStore.selectExpenseListData);
 
   //state
-  const [modalOpen, setModalOpen] = useState(false);
+
   const [expenseState, setExpenseState] = useState({
     title: "",
     amount: 0,
@@ -48,12 +51,21 @@ const Edit = () => {
   }, [totalExpenses]);
 
   const handleSubmit = () => {
-    dispatch(fromExpenseStore.editExpense(expenseState));
-    setModalOpen(!modalOpen);
+    // dispatch(fromExpenseStore.editExpense(expenseState));
+    dispatch(editExpense(expenseState));
+    notifySuccessAdd();
+    // setExpenseState.title();
   };
 
   return (
-    <div>
+    <Box>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+      />
       <Box>
         {/* homeButton */}
         <Link to="/">
@@ -74,7 +86,6 @@ const Edit = () => {
         </Link>
         {/* Form start from here*/}
         <FormControl>
-          <Successmodal modalOpen={modalOpen} />
           <FormLabel>Title</FormLabel>
           <Input
             width="350px"
@@ -108,7 +119,7 @@ const Edit = () => {
           </Box>
         </FormControl>
       </Box>
-    </div>
+    </Box>
   );
 };
 

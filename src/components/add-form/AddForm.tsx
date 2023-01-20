@@ -15,7 +15,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { addExpense } from "../../store/expense";
+import { addExpense } from "../../store/expense/actions";
 import { selectCategoryList } from "../../store/category/selectors";
 
 const AddForm = () => {

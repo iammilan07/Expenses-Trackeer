@@ -2,7 +2,7 @@ import moment from "moment/moment";
 import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { deleteExpense } from "../../store/expense/slice";
+import { deleteExpensee } from "../../store/expense/index";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +17,7 @@ const Card = (props: any) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     notifySuccessDelete();
-    dispatch(deleteExpense(expense));
+    dispatch(deleteExpensee(expense));
   };
 
   return (
