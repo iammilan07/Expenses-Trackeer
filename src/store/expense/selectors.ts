@@ -1,6 +1,6 @@
 export const selectExpenseList = (state: any) => state.expenseList.expense;
 
-
+export const selectLoading = (state: any) => state.expenseList.loading;
 export const selectMappedList = (state: any) => {
     let x: any = {}
     const mapped = state.expenseList.expense.map((item: any) => {

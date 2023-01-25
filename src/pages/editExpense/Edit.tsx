@@ -13,7 +13,7 @@ import { AiOutlineHome, AiOutlinePlus } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import * as fromExpenseStore from "../../store/expense";
-import { editExpense } from "../../store/expense/slice";
+import { editExpense } from "../../store/expense/index";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Edit = () => {
