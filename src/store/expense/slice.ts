@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { storageKey } from "../../constants";
-// import { expenseDB } from "../../database";
 import { IDLE_STATUS, loadingType, LOADING_STATUS } from "../../constants/index";
 
 export interface ExpenseState {
@@ -8,18 +6,8 @@ export interface ExpenseState {
     loaded: boolean,
     loading: loadingType
 }
-// const initialList = () => {
-//     const list = localStorage.getItem("expense-list");
-//     let expenses = [];
-//     if (list) {
-//         expenses = JSON.parse(list);
-//     }
-//     return expenses;
-// };
-
 
 const initialState: ExpenseState = {
-    // expense: initialList(),
     expense: [],
     loaded: false,
     loading: LOADING_STATUS,
@@ -39,28 +27,18 @@ const expenseSlice = createSlice({
         },
         fetchExpense: (state: any, action: any) => {
             state.expense = action.payload
-            // console.log(state.expanse);
+
         },
 
         addExpense: (state: any, action: any) => {
             state.expense.push(action.payload)
         },
 
-
-
-        // addExpense: (state: any, action: any) => {
-        //     const newList = [...state.expense, action.payload]
-        //     localStorage.setItem(storageKey, JSON.stringify(newList));
-        //     state.expense = newList
-        // },
-
-
         deleteExpense: (state: any, action: any) => {
             const newStatee = state.expense.filter((item: any) => item.id !== action.payload.id);
             // localStorage.setItem(storageKey, JSON.stringify(newStatee));
             state.expense = newStatee;
         },
-
 
         editExpense: (state, action) => {
             const data = state.expense
@@ -69,23 +47,6 @@ const expenseSlice = createSlice({
             // expenseDB.put(newData)
             state.expense = newData
         },
-
-
-
-
-        // editExpense: (state, action) => {
-        //     const expense: any = window.localStorage.getItem('expense-list');
-        //     const parsedExpenseDataFromStorage = JSON.parse(expense)
-        //     const filteredExpenseData = parsedExpenseDataFromStorage.map((expenseData: any) => {
-        //         if (expenseData.id === action.payload.id) {
-        //             return action.payload
-        //         }
-        //         return expenseData
-        //     })
-        //     localStorage.setItem(storageKey, JSON.stringify(filteredExpenseData))
-        //     state.expense = filteredExpenseData
-        // }
-
 
     },
 });

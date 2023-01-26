@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as fromExpenseStore from "../../store/expense";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Spinner, Text } from "@chakra-ui/react";
 import Card from "./Card";
 import { useSelector, useDispatch } from "react-redux";
 import { ImFilesEmpty } from "react-icons/im";
@@ -25,20 +25,18 @@ const Expenselist = () => {
   };
   // const expense = useSelector(selectExpenseList);
   // console.log("new", expense);
-  const loading = useSelector(selectLoading);
+  // const loading = useSelector(selectLoading);
   useEffect(() => {
     dispatch(fetchExpense());
   }, []);
 
   return (
     <Box>
-      {/* {loading && <Spinner />} */}
+      {/* {Object.keys(totalExpense) && <Spinner />} */}
 
-      {!loading && totalExpense?.length > 0 && (
-        <pre>{JSON.stringify(totalExpense, null, 2)}</pre>
-      )}
-
-      {!loading && totalExpense?.length === 0 && <p>noData</p>}
+      {/* {!Object.keys(totalExpense) && totalExpense?.length > 0 && 
+      
+      } */}
 
       {Object.keys(totalExpense).length > 0 ? (
         Object.keys(totalExpense).map((key: any) => {
@@ -59,7 +57,7 @@ const Expenselist = () => {
                   else
                     return (
                       <Text textAlign="center">
-                        Your Total Expenses is=RS {expense.amount}
+                        Your Total Expenses is RS {expense.amount}.
                       </Text>
                     );
                 })}
@@ -75,6 +73,7 @@ const Expenselist = () => {
           <Text>Please add some expenses ...</Text>
         </Box>
       )}
+      {/* {!loading && totalExpense?.length === 0 && <p>noData</p>} */}
     </Box>
   );
 };

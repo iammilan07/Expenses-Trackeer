@@ -1,4 +1,4 @@
-import { Box, Button, FormLabel, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, FormLabel, Stack } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { addCategory } from "../../store/category/slice";
@@ -36,7 +36,7 @@ const Addcategory = () => {
       <FormLabel>Add Category</FormLabel>
       <Box marginTop="5px" backgroundColor="transparent" width="350px">
         <input
-          placeholder="add-category"
+          placeholder="Add-Category"
           style={{
             padding: "10px",
             color: "white",
@@ -52,7 +52,7 @@ const Addcategory = () => {
       <FormLabel marginTop="25px">Add Color</FormLabel>
       <Box width="350px" marginTop="5px">
         <input
-          placeholder="add-color"
+          placeholder="Add-Color"
           style={{
             padding: "10px",
             color: "white",

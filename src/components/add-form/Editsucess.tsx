@@ -7,13 +7,13 @@ const Categorysucess = (props: any) => {
   const { modalOpen } = props;
   const customStyles = {
     content: {
-      top: "50%",
+      top: "40%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "grey",
+      backgroundColor: "black",
       borderRadius: "12px",
     },
   };
@@ -45,7 +45,7 @@ const Categorysucess = (props: any) => {
             >
               <AiOutlineHome />
             </Box>
-            <Text>Home</Text>
+            <Text as="b">Home</Text>
           </Box>
         </Link>
       </Box>

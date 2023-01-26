@@ -15,8 +15,8 @@ export const Balance = () => {
   });
   return (
     <Box display="flex" marginBottom="5vh" marginLeft="60px">
-      <Text paddingRight="3px">Your Remaining Balance =</Text>
-      <Text as="b">Rs {incc - decc}</Text>
+      {/* <Text paddingRight="3px">Total expenditure =</Text> */}
+      {/* <Text as="b">Rs {incc - decc}</Text> */}
     </Box>
   );
 };

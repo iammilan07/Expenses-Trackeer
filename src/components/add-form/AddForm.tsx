@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlinePlus } from "react-icons/ai";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { addExpense } from "../../store/expense/actions";
 import { selectCategoryList } from "../../store/category/selectors";
 
@@ -75,16 +74,15 @@ const AddForm = () => {
         />
         <FormLabel>Title</FormLabel>
         <Input
+          padding="10px"
           width="350px"
           placeholder="Expenditure Name"
           value={title}
           onChange={(e) => handleTitle(e)}
         />
-        {/* {errors?.title?.type === "required" && (
-          <p style={{ color: "red" }}>This field is required!! ⚠</p>
-        )} */}
         <FormLabel paddingRight="7px">Amountरु</FormLabel>
         <Input
+          padding="10px"
           className="amount-input"
           placeholder="Enter Amount"
           width="350px"

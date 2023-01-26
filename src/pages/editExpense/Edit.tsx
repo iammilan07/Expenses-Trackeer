@@ -16,6 +16,7 @@ import * as fromExpenseStore from "../../store/expense";
 import { editExpense } from "../../store/expense/index";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Successmodal from "../../components/add-form/Editsucess";
 const Edit = () => {
   const notifySuccessAdd = () => toast.success("Expenses Added Successfully");
   //params
@@ -29,10 +30,10 @@ const Edit = () => {
   const totalExpenses = useSelector(fromExpenseStore.selectExpenseListData);
 
   //state
-
+  const [modalOpen, setModalOpen] = useState(false);
   const [expenseState, setExpenseState] = useState({
     title: "",
-    amount: 0,
+    // amount: 0,
   });
 
   //functions
@@ -51,14 +52,14 @@ const Edit = () => {
   }, [totalExpenses]);
 
   const handleSubmit = () => {
-    // dispatch(fromExpenseStore.editExpense(expenseState));
     dispatch(editExpense(expenseState));
-    notifySuccessAdd();
-    // setExpenseState.title();
+    // notifySuccessAdd();
+    setModalOpen(!modalOpen);
   };
 
   return (
     <Box>
+      <Successmodal modalOpen={modalOpen} />
       <ToastContainer
         position="bottom-left"
         autoClose={1500}
@@ -97,15 +98,15 @@ const Edit = () => {
           <Box
             className="Form-add-button"
             paddingTop="50px"
-            paddingLeft="210px"
+            paddingLeft="280px"
             color="white"
           >
             <Stack direction="row" spacing={4}>
               <Button
-                colorScheme="blue"
+                background="transparent"
                 display="flex"
                 onClick={handleSubmit}
-                border="1px solid black"
+                border="1px solid white"
                 padding="2px 8px"
                 borderRadius="6px"
                 cursor="pointer"
