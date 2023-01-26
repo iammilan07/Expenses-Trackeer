@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, FormLabel, Stack, Text } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { addCategory } from "../../store/category/slice";
@@ -33,22 +33,32 @@ const Addcategory = () => {
         newestOnTop={false}
         closeOnClick
       />
-      <Text>Add Category</Text>
+      <FormLabel>Add Category</FormLabel>
       <Box marginTop="5px" backgroundColor="transparent" width="350px">
         <input
           placeholder="add-category"
-          style={{ color: "white", height: "40px", borderRadius: "7px" }}
+          style={{
+            padding: "10px",
+            color: "white",
+            height: "40px",
+            borderRadius: "7px",
+          }}
           {...register("title", { required: true, maxLength: 20 })}
         />
       </Box>
       {errors?.title?.type === "required" && (
         <p style={{ color: "red" }}>This field is required!! ⚠</p>
       )}
-      <Text marginTop="25px">Add Color</Text>
+      <FormLabel marginTop="25px">Add Color</FormLabel>
       <Box width="350px" marginTop="5px">
         <input
           placeholder="add-color"
-          style={{ color: "white", height: "40px", borderRadius: "7px" }}
+          style={{
+            padding: "10px",
+            color: "white",
+            height: "40px",
+            borderRadius: "7px",
+          }}
           {...register("color", { pattern: /^[A-Za-z]+$/i })}
         />
       </Box>

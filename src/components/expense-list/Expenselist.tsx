@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as fromExpenseStore from "../../store/expense";
-import { Box, Spinner, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import Card from "./Card";
 import { useSelector, useDispatch } from "react-redux";
 import { ImFilesEmpty } from "react-icons/im";

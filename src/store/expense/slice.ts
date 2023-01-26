@@ -61,17 +61,14 @@ const expenseSlice = createSlice({
             state.expense = newStatee;
         },
 
-        // editExpense: (state, action) => {
-        //     const data: any = state.expense;
-        //     const filteredExpenseData = data.map((expenseData: any) => {
-        //         if (expenseData.id === action.payload.id) {
-        //             return action.payload
-        //         }
-        //         return expenseData
-        //     })
-        //     state.expense = filteredExpenseData
-        // }
 
+        editExpense: (state, action) => {
+            const data = state.expense
+            const newData = data.map((item: any) =>
+                item.id === action.payload.id ? action.payload : item);
+            // expenseDB.put(newData)
+            state.expense = newData
+        },
 
 
 
@@ -89,13 +86,6 @@ const expenseSlice = createSlice({
         //     state.expense = filteredExpenseData
         // }
 
-        editExpense: (state, action) => {
-            const data = state.expense
-            const newData = data.map((item: any) =>
-                item.id === action.payload.id ? action.payload : item);
-            // expenseDB.put(newData)
-            state.expense = newData
-        },
 
     },
 });
