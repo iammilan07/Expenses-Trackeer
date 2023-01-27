@@ -89,6 +89,7 @@ const Edit = () => {
         <FormControl>
           <FormLabel>Title</FormLabel>
           <Input
+            padding="10px"
             width="350px"
             name="title"
             placeholder="Expenditure Name"

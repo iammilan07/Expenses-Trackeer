@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IDLE_STATUS, loadingType, LOADING_STATUS } from "../../constants/index";
+import { expenseDB } from "../../database";
 
 export interface ExpenseState {
     expense: any[],
@@ -36,7 +37,6 @@ const expenseSlice = createSlice({
 
         deleteExpense: (state: any, action: any) => {
             const newStatee = state.expense.filter((item: any) => item.id !== action.payload.id);
-            // localStorage.setItem(storageKey, JSON.stringify(newStatee));
             state.expense = newStatee;
         },
 
@@ -44,7 +44,6 @@ const expenseSlice = createSlice({
             const data = state.expense
             const newData = data.map((item: any) =>
                 item.id === action.payload.id ? action.payload : item);
-            // expenseDB.put(newData)
             state.expense = newData
         },
 

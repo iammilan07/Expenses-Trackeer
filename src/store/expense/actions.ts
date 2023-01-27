@@ -1,4 +1,3 @@
-import { categories } from "../../constants/Addcategories"
 import { expenseDB } from "../../database"
 import * as fromSlice from "./slice"
 
