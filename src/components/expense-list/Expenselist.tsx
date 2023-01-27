@@ -27,10 +27,11 @@ const Expenselist = () => {
         Object.keys(totalExpense).map((key: any) => {
           return (
             <Box key={key}>
-              <Text as="b">{key}</Text>
+              <Text as="b" key={totalExpense.id}>
+                {key}
+              </Text>
               {totalExpense[key]?.length !== 0 &&
                 totalExpense[key]?.map((expense: any) => {
-                  console.log("newdata", expense);
                   if (expense?.title !== "Total")
                     return (
                       <Card
@@ -42,7 +43,7 @@ const Expenselist = () => {
                     );
                   else
                     return (
-                      <Text textAlign="center">
+                      <Text textAlign="center" key={expense.id}>
                         Your Total Expenses is RS {expense.amount}.
                       </Text>
                     );
