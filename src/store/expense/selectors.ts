@@ -1,3 +1,5 @@
+import { off } from "process";
+
 export const selectExpenseList = (state: any) => state.expenseList.expense;
 
 export const selectLoading = (state: any) => state.expenseList.loading;
@@ -41,8 +43,10 @@ export const selectExpenseListData = (state: any) => {
     Object.keys(x).forEach((key: any) => {
         const expenseCloned = x[key];
         const total = expenseCloned.reduce((acc: any, curr: any) => {
+            console.log(typeof curr.amount)
             return acc + curr.amount
         }, 0)
+
         expenseCloned.push({
             title: 'Total',
             amount: total,

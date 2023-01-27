@@ -30,6 +30,7 @@ const Expenselist = () => {
               <Text as="b">{key}</Text>
               {totalExpense[key]?.length !== 0 &&
                 totalExpense[key]?.map((expense: any) => {
+                  console.log("newdata", expense);
                   if (expense?.title !== "Total")
                     return (
                       <Card

@@ -13,6 +13,7 @@ const Addcategory = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   //dispatch
@@ -22,6 +23,7 @@ const Addcategory = () => {
   const onhandleSubmit = (data: any) => {
     dispatch(addCategory(data));
     notifySuccessAdd();
+    reset();
   };
 
   return (

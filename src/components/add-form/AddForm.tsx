@@ -1,4 +1,4 @@
-import { Box, Button, FormLabel, HStack, Stack } from "@chakra-ui/react";
+import { Box, Button, FormLabel, HStack, Input, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { categories } from "../../constants/Addcategories";
@@ -15,6 +15,7 @@ const AddForm = () => {
     register,
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   let u = Date.now().toString(16) + Math.random().toString(16) + "0".repeat(16);
@@ -27,9 +28,7 @@ const AddForm = () => {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const categoryList = useSelector(selectCategoryList);
-
   //functions
-
   const handleCategory = (category: any) => {
     setCategory(category);
     setCategoryOpen(false);
@@ -39,7 +38,7 @@ const AddForm = () => {
     dispatch(addExpense(params));
     setModalOpen(!modalOpen);
     notifySuccessAdd();
-    setCategory("");
+    reset();
   };
 
   return (
@@ -71,15 +70,21 @@ const AddForm = () => {
 
         <FormLabel paddingRight="7px">Amountरु</FormLabel>
         <Box marginTop="5px" backgroundColor="transparent" width="350px">
-          <input
-            placeholder="Add-category"
+          <Input
+            type="number"
+            placeholder="Add-Amount"
             style={{
               padding: "10px",
               color: "white",
               height: "40px",
               borderRadius: "7px",
             }}
-            {...register("amount", { required: true, maxLength: 20 })}
+            {...register("amount", {
+              validate: (value) => value > 0,
+              valueAsNumber: true,
+              required: true,
+              maxLength: 20,
+            })}
           />
         </Box>
         {errors?.amount?.type === "required" && (

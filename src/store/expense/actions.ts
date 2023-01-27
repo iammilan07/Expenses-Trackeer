@@ -16,7 +16,7 @@ export const fetchExpense = (): any => async (dispatch: any) => {
 export const addExpense = (expense: any): any => async (dispatch: any) => {
     // dispatch(fromSlice.addExpense(expense))
     const response = await expenseDB.post(expense);
-    console.log(response)
+    // console.log(response)
     if (response) {
         const { id }: any = response;
         dispatch(fromSlice.addExpense({ ...expense, id }))
@@ -34,7 +34,7 @@ export const deleteExpensee = (id: any): any => async (dispatch: any) => {
 }
 
 export const editExpense = (expense: any): any => async (dispatch: any) => {
-    console.log("updateddata", expense)
+    // console.log("updateddata", expense)
     try {
         dispatch(fromSlice.editExpense(expense))
         await expenseDB.put(expense)
