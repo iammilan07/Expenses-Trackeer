@@ -39,6 +39,7 @@ const AddForm = () => {
     setModalOpen(!modalOpen);
     notifySuccessAdd();
     reset();
+    category();
   };
 
   return (

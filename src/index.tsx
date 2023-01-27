@@ -9,6 +9,7 @@ import { AppTheme } from "./theme";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <ChakraProvider theme={AppTheme}>
     <Provider store={store}>

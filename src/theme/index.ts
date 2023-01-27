@@ -4,6 +4,7 @@ export const global = {
     'html, body': {
         bg: 'gray.900',
         color: 'gray.100',
+
     },
 }
 
