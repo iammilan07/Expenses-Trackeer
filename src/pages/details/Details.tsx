@@ -12,6 +12,7 @@ import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
 import Newexpenselist from "../../components/expense-list/Newexpenselist";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
 const Details = () => {
   //state
@@ -49,22 +50,23 @@ const Details = () => {
   };
 
   return (
-    <Box marginBottom="100px">
+    <Box paddingTop="10px" marginBottom="100px">
       {/* <pre>{JSON.stringify(data1, null, 2)}</pre> */}
 
       <Link to="/">
         <Button
-          width="65px"
+          colorScheme="gray.200"
+          width="50px"
           height="30px"
           fontSize="12px"
-          border="1px solid black"
+          border="1px solid white"
           borderRadius="6px"
-          backgroundColor="cyan.400"
-          marginLeft="280px"
+          backgroundColor="transparent"
+          marginLeft="300px"
         >
           <HStack justifyContent="center" alignItems="center">
-            <AiOutlineHome />
-            <Text>Home</Text>
+            <MdOutlineArrowBackIos />
+            {/* <Text>Home</Text> */}
           </HStack>
         </Button>
       </Link>
@@ -130,9 +132,11 @@ const Details = () => {
         width="300px"
       >
         <Text className="header">Items According to the date!!</Text>
-        <Calendar onChange={setDate} value={date} />
+        <Box>
+          <Calendar onChange={setDate} value={date} />
+        </Box>
         <Box className="text-center">
-          Expense list of: {date.toLocaleDateString()}
+          Expense list of : {date.toLocaleDateString()}
         </Box>
       </Box>
 
