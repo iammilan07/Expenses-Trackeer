@@ -39,7 +39,7 @@ const AddForm = () => {
     setModalOpen(!modalOpen);
     notifySuccessAdd();
     reset();
-    category();
+    setCategory("");
   };
 
   return (

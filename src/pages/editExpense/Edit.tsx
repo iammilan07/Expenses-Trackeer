@@ -14,11 +14,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import * as fromExpenseStore from "../../store/expense";
 import { editExpense } from "../../store/expense/index";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "../../components/add-form/Editsucess";
 const Edit = () => {
-  const notifySuccessAdd = () => toast.success("Expenses Added Successfully");
+  // const notifySuccessAdd = () => toast.success("Expenses Added Successfully");
   //params
   const params = useParams();
   const ids = params.id;
