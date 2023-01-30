@@ -75,8 +75,10 @@ const Addcategory = () => {
       >
         <Stack direction="row" spacing={4}>
           <Button
+            colorScheme="green"
             type="submit"
-            colorScheme="black"
+            width="73px"
+            // colorScheme="black"
             display="flex"
             border="1px solid white"
             padding="2px 8px"

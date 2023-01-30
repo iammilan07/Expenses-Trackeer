@@ -7,13 +7,12 @@ import Header from "./components/header";
 import Footer from "./components/footer/Footer";
 import Error from "./pages/error/Error";
 import Edit from "./pages/editExpense/Edit";
-import Announcement from "./components/marque/Announcement";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Announcement />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />

@@ -51,7 +51,7 @@ const AddForm = () => {
   };
 
   return (
-    <Box className="add-from">
+    <Box className="add-from" marginBottom="100px">
       <form onSubmit={handleSubmit(onhandleSubmit)}>
         <ToastContainer
           position="bottom-left"
@@ -183,7 +183,8 @@ const AddForm = () => {
         >
           <Stack direction="row" spacing={4}>
             <Button
-              colorScheme="black"
+              width="73px"
+              colorScheme="green"
               display="flex"
               type="submit"
               border="1px solid white"

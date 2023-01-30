@@ -17,6 +17,7 @@ import { editExpense } from "../../store/expense/index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Successmodal from "../../components/add-form/Editsucess";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 const Edit = () => {
   // const notifySuccessAdd = () => toast.success("Expenses Added Successfully");
   //params
@@ -58,7 +59,7 @@ const Edit = () => {
   };
 
   return (
-    <Box>
+    <Box paddingTop="10px">
       <Successmodal modalOpen={modalOpen} />
       <ToastContainer
         position="bottom-left"
@@ -71,17 +72,18 @@ const Edit = () => {
         {/* homeButton */}
         <Link to="/">
           <Button
-            width="65px"
+            width="50px"
             height="30px"
             fontSize="12px"
-            border="1px solid black"
+            border="1px solid white"
             borderRadius="6px"
-            backgroundColor="cyan.400"
-            marginLeft="280px"
+            backgroundColor="transparent"
+            colorScheme="gray.200"
+            marginLeft="300px"
           >
             <HStack justifyContent="center" alignItems="center">
-              <AiOutlineHome />
-              <Text>Home</Text>
+              <MdOutlineArrowBackIos />
+              {/* <Text>Home</Text> */}
             </HStack>
           </Button>
         </Link>
@@ -104,10 +106,11 @@ const Edit = () => {
           >
             <Stack direction="row" spacing={4}>
               <Button
-                background="transparent"
+                width="73px"
                 display="flex"
                 onClick={handleSubmit}
                 border="1px solid white"
+                colorScheme="green"
                 padding="2px 8px"
                 borderRadius="6px"
                 cursor="pointer"
