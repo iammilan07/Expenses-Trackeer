@@ -49,7 +49,7 @@ const Details = () => {
   };
 
   return (
-    <Box>
+    <Box marginBottom="100px">
       {/* <pre>{JSON.stringify(data1, null, 2)}</pre> */}
 
       <Link to="/">
