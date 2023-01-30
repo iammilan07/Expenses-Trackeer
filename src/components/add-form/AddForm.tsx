@@ -1,4 +1,12 @@
-import { Box, Button, FormLabel, HStack, Input, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormLabel,
+  HStack,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { categories } from "../../constants/Addcategories";
@@ -52,108 +60,120 @@ const AddForm = () => {
           newestOnTop={false}
           closeOnClick
         />
-        <FormLabel>Title</FormLabel>
-        <Box marginTop="5px" backgroundColor="transparent" width="350px">
-          <input
-            placeholder="Add-Expense"
-            style={{
-              padding: "10px",
-              color: "white",
-              height: "40px",
-              borderRadius: "7px",
-            }}
-            {...register("title", { required: true, maxLength: 20 })}
-          />
+        <Box paddingTop="25px">
+          <Text as="b">Title</Text>
+          <Box marginBottom="10px" backgroundColor="transparent" width="350px">
+            <input
+              placeholder="Add-Expense"
+              style={{
+                padding: "10px",
+                color: "white",
+                height: "40px",
+                borderRadius: "7px",
+              }}
+              {...register("title", { required: true, maxLength: 20 })}
+            />
+          </Box>
+          {errors?.title?.type === "required" && (
+            <p style={{ color: "red" }}>This field is required!! ⚠</p>
+          )}
         </Box>
-        {errors?.title?.type === "required" && (
-          <p style={{ color: "red" }}>This field is required!! ⚠</p>
-        )}
 
-        <FormLabel paddingRight="7px">Amountरु</FormLabel>
-        <Box marginTop="5px" backgroundColor="transparent" width="350px">
-          <Input
-            type="number"
-            placeholder="Add-Amount"
-            style={{
-              padding: "10px",
-              color: "white",
-              height: "40px",
-              borderRadius: "7px",
-            }}
-            {...register("amount", {
-              validate: (value) => value > 0,
-              valueAsNumber: true,
-              required: true,
-              maxLength: 20,
-            })}
-          />
+        <Box paddingTop="15px">
+          <Text as="b" paddingRight="7px">
+            Amountरु
+          </Text>
+          <Box marginTop="10px" backgroundColor="transparent" width="350px">
+            <input
+              type="number"
+              placeholder="Add-Amount"
+              style={{
+                padding: "10px",
+                color: "white",
+                height: "40px",
+                borderRadius: "7px",
+              }}
+              {...register("amount", {
+                validate: (value) => value > 0,
+                valueAsNumber: true,
+                required: true,
+                maxLength: 20,
+              })}
+            />
+          </Box>
+          {errors?.amount?.type === "required" && (
+            <p style={{ color: "red" }}>This field is required!! ⚠</p>
+          )}
         </Box>
-        {errors?.amount?.type === "required" && (
-          <p style={{ color: "red" }}>This field is required!! ⚠</p>
-        )}
 
         {/* Category */}
-
-        <Controller
-          name="category"
-          render={({ field }) => (
-            <Box
-              className="category-container-parent"
-              border="1px solid white"
-              borderRadius="5px"
-              marginTop="15px"
-              width="350px"
-            >
-              <Box className="category">
-                <HStack
-                  backgroundColor="transparent"
-                  cursor="pointer"
-                  onClick={() => setCategoryOpen(!categoryOpen)}
-                >
-                  <FormLabel paddingLeft="15px" paddingRight="13.5rem">
-                    {category ? category?.title : "Category"}
-                  </FormLabel>
-                  <IoIosArrowDropdown style={{ alignItems: "center" }} />
-                </HStack>
-                {/* categoryopen */}
-                {categoryOpen && (
-                  <Box className="category-container" width="250px">
-                    {categoryList.map((category: any) => (
-                      <Box
-                        className="category-item"
-                        style={{
-                          borderRight: `5px solid ${category.color}`,
-                        }}
-                        key={category.id}
-                        onClick={() => handleCategory(category)}
-                      >
-                        <label>{category.title}</label>
-                      </Box>
-                    ))}
-                    {cat.map((category: any) => (
-                      <Box
-                        padding="10px"
-                        justifyContent="space-between"
-                        className="category-item"
-                        style={{
-                          borderRight: `5px solid ${category.color}`,
-                        }}
-                        key={category.id}
-                        onClick={() => handleCategory(category)}
-                      >
-                        <label style={{ cursor: "pointer" }}>
-                          {category.title}
-                        </label>
-                      </Box>
-                    ))}
-                  </Box>
-                )}
+        <Box paddingTop="20px">
+          <Text as="b" paddingRight="7px">
+            Add-Category
+          </Text>
+          <Controller
+            name="category"
+            render={({ field }) => (
+              <Box
+                marginTop="10px"
+                className="category-container-parent"
+                border="1px solid white"
+                borderRadius="5px"
+                width="350px"
+              >
+                <Box className="category">
+                  <HStack
+                    backgroundColor="transparent"
+                    cursor="pointer"
+                    onClick={() => setCategoryOpen(!categoryOpen)}
+                  >
+                    <FormLabel paddingLeft="15px" paddingRight="13.5rem">
+                      {category ? category?.title : "Category"}
+                    </FormLabel>
+                    <IoIosArrowDropdown style={{ alignItems: "center" }} />
+                  </HStack>
+                  {/* categoryopen */}
+                  {categoryOpen && (
+                    <Box className="category-container" width="250px">
+                      {categoryList.map((category: any) => (
+                        <Box
+                          className="category-item"
+                          style={{
+                            borderRight: `5px solid ${category.color}`,
+                          }}
+                          key={category.id}
+                          onClick={() => handleCategory(category)}
+                        >
+                          <label>{category.title}</label>
+                        </Box>
+                      ))}
+                      {cat.map((category: any) => (
+                        <Box
+                          width="250px"
+                          padding="10px"
+                          justifyContent="space-between"
+                          className="category-item"
+                          style={{
+                            width: "348px",
+                            borderRight: `6px solid ${category.color}`,
+                          }}
+                          key={category.id}
+                          onClick={() => handleCategory(category)}
+                        >
+                          <label style={{ cursor: "pointer", width: "250px" }}>
+                            {category.title}
+                          </label>
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
+                </Box>
               </Box>
-            </Box>
-          )}
-          control={control}
-          defaultValue=""
-        />
+            )}
+            control={control}
+            defaultValue=""
+          />
+        </Box>
 
         <Box
           className="Form-add-button"

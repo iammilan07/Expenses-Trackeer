@@ -7,52 +7,54 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <Box position="sticky" bottom="0">
+    <Box position="fixed" width="100%" left="0" bottom="-1">
       <Box
-        width="100%"
-        marginTop="100%"
-        paddingLeft="85px"
+        // paddingLeft="85px"
         justifyContent="center"
         alignItems="center"
       >
         <Box
           border="1px solid black"
-          borderRadius="10px"
-          width="200px"
+          // borderRadius="10px"
           backgroundColor="white"
         >
           <Tabs
             justifyContent="space-between"
+            width="100%"
             variant="soft-rounded"
             colorScheme="green"
             display="flex"
           >
             <Link to="/">
-              <Tab>
+              <Tab fontSize="24px" flexDirection="column">
                 <AiOutlineHome />
+                <Text fontSize="xs">Home</Text>
               </Tab>
             </Link>
             <Link to="add-expense">
-              <Tab>
+              <Tab fontSize="24px" flexDirection="column">
                 <BsBookmarkPlus />
+                <Text fontSize="xs">Add-Expense</Text>
               </Tab>
             </Link>
             <Link to="add-category">
-              <Tab>
+              <Tab fontSize="24px" flexDirection="column">
                 <MdAddShoppingCart />
+                <Text fontSize="xs">Add-Category</Text>
               </Tab>
             </Link>
             <Link to="details">
-              <Tab>
+              <Tab fontSize="24px" flexDirection="column">
                 <BiCommentDetail />
+                <Text fontSize="xs">Details</Text>
               </Tab>
             </Link>
           </Tabs>
         </Box>
       </Box>
-      <Box textAlign="center" marginLeft="20px">
+      {/* <Box textAlign="center">
         <Text visibility="hidden">Made with ❤️ in Reactredux!!</Text>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

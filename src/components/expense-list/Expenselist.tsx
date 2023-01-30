@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as fromExpenseStore from "../../store/expense";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, HStack, Text } from "@chakra-ui/react";
 import Card from "./Card";
 import { useSelector, useDispatch } from "react-redux";
 import { ImFilesEmpty } from "react-icons/im";
@@ -22,7 +22,7 @@ const Expenselist = () => {
   }, []);
 
   return (
-    <Box>
+    <Box marginBottom="100px">
       {Object.keys(totalExpense).length > 0 ? (
         Object.keys(totalExpense).map((key: any) => {
           return (
@@ -43,9 +43,14 @@ const Expenselist = () => {
                     );
                   else
                     return (
-                      <Text textAlign="center" key={expense.id}>
-                        Your Total Expenses is RS {expense.amount}.
-                      </Text>
+                      <Box flexDirection="row" textAlign="center">
+                        <Text key={expense.id}>
+                          Your Total Expenses is
+                          <Text marginLeft="8px" as="b">
+                            RS {expense.amount}.
+                          </Text>
+                        </Text>
+                      </Box>
                     );
                 })}
             </Box>

@@ -23,7 +23,9 @@ const Card = (props: any) => {
   return (
     <Box
       color="black"
-      width="350px"
+      borderRadius="8px"
+      width="100%"
+      height="100%"
       borderRight={`6px solexpense ${expense?.category?.color}`}
       backgroundColor="white"
       padding="12px"
@@ -43,7 +45,12 @@ const Card = (props: any) => {
         <Image
           src={expense?.category?.icon}
           alt={expense?.category?.title}
-          height="40px"
+          height="35px"
+          width="35px"
+          background="#EBEBEB"
+          borderRadius="50%"
+          alignItems="center"
+          justifyContent="center"
         />
       </Box>
       <Box

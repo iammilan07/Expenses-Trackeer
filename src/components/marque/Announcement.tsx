@@ -4,6 +4,8 @@ import Marquee from "react-fast-marquee";
 const Announcement = () => {
   return (
     <Box
+      background="green.500"
+      height="53px"
       color="#fff"
       display="flex"
       justify-content="space-around"
