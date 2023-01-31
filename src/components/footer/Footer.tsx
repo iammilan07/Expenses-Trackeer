@@ -44,9 +44,6 @@ const Footer = () => {
           </Tabs>
         </Box>
       </Box>
-      {/* <Box textAlign="center">
-        <Text visibility="hidden">Made with ❤️ in Reactredux!!</Text>
-      </Box> */}
     </Box>
   );
 };
