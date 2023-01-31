@@ -1,7 +1,6 @@
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { AiOutlineHome } from "react-icons/ai";
 import {
   selectExpenseList,
   selectpiechart,
@@ -173,7 +172,7 @@ const Details = () => {
         >
           <Calendar onChange={setDate} value={date} />
         </Box>
-        <Box className="text-center">
+        <Box className="text-center" textAlign="center">
           Expense list of : {date.toLocaleDateString()}
         </Box>
       </Box>
