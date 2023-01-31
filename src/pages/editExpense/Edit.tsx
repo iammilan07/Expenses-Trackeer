@@ -79,7 +79,6 @@ const Edit = () => {
             borderRadius="6px"
             backgroundColor="transparent"
             colorScheme="gray.200"
-            marginLeft="300px"
           >
             <HStack justifyContent="center" alignItems="center">
               <MdOutlineArrowBackIos />

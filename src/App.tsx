@@ -11,8 +11,6 @@ import Edit from "./pages/editExpense/Edit";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />

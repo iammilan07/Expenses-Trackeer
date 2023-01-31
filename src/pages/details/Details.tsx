@@ -53,24 +53,26 @@ const Details = () => {
     <Box paddingTop="10px" marginBottom="100px" width="100%">
       {/* <pre>{JSON.stringify(data1, null, 2)}</pre> */}
 
-      <Link to="/">
-        <Button
-          colorScheme="gray.200"
-          width="50px"
-          height="30px"
-          fontSize="12px"
-          border="1px solid white"
-          borderRadius="6px"
-          backgroundColor="transparent"
-          marginLeft="300px"
-        >
-          <HStack justifyContent="center" alignItems="center">
-            <MdOutlineArrowBackIos />
-            {/* <Text>Home</Text> */}
-          </HStack>
-        </Button>
-      </Link>
-      <Text textAlign="center" fontSize="20px">
+      <Box width="100%">
+        <Link to="/">
+          <Button
+            colorScheme="gray.200"
+            width="50px"
+            height="30px"
+            fontSize="12px"
+            border="1px solid white"
+            borderRadius="6px"
+            backgroundColor="transparent"
+            marginLeft="0px"
+          >
+            <HStack justifyContent="center" alignItems="center">
+              <MdOutlineArrowBackIos />
+              {/* <Text>Home</Text> */}
+            </HStack>
+          </Button>
+        </Link>
+      </Box>
+      <Text textAlign="center" fontSize="25px" paddingTop="10px">
         Your Expense Details!
       </Text>
       <Box alignItems="center" justifyContent="center">
@@ -97,20 +99,28 @@ const Details = () => {
               </Pie>
             </PieChart>
           ) : (
-            <Box height="200px" paddingTop="100px">
-              <Box display="flex" justifyContent="center">
-                <Text textAlign="center" fontSize="25px" color="red">
+            <Box height="200px" paddingTop="90px">
+              <Box justifyContent="center">
+                <Box>
+                  <Box fontSize="40px" paddingLeft="160px">
+                    <ImFilesEmpty />
+                  </Box>
+                </Box>
+                <Text
+                  textAlign="center"
+                  fontSize="25px"
+                  color="rgb(194, 84, 91)"
+                >
                   PieChart Empty!!
                 </Text>
-                <ImFilesEmpty />
               </Box>
-              <Text textAlign="center" color="red">
+              <Text textAlign="center" color="rgb(194, 84, 91)">
                 Please add some expenses ...
               </Text>
             </Box>
           )}
 
-          <Text as="b" paddingLeft="70px">
+          <Text as="b" paddingLeft="60px">
             Chart: Pie-Chart based on expense.
           </Text>
         </Box>
@@ -137,36 +147,38 @@ const Details = () => {
               </Pie>
             </PieChart>
           ) : (
-            <Box height="200px" paddingTop="100px">
-              <Box display="flex" justifyContent="center">
-                <Text textAlign="center" fontSize="25px" color="red">
+            <Box height="200px" paddingTop="90px">
+              <Box justifyContent="center">
+                <Box>
+                  <Box fontSize="40px" paddingLeft="160px">
+                    <ImFilesEmpty />
+                  </Box>
+                </Box>
+                <Text
+                  textAlign="center"
+                  fontSize="25px"
+                  color="rgb(194, 84, 91)"
+                >
                   PieChart Empty!!
                 </Text>
-                <ImFilesEmpty />
               </Box>
-              <Text textAlign="center" color="red">
+              <Text textAlign="center" color="rgb(194, 84, 91)">
                 Please add some expenses ...
               </Text>
             </Box>
           )}
-          <Text as="b" paddingLeft="70px">
+          <Text as="b" paddingLeft="60px">
             Chart: Pie-Chart based on category.
           </Text>
         </Box>
       </Box>
-      <Box
-        // className="app"
-
-        marginRight="10px"
-        paddingTop="50px"
-        // width="300px"
-      >
+      <Box marginRight="10px" paddingTop="50px">
         <Text textAlign="center" className="header">
           Items According to the date!!
         </Text>
         <Box
-          paddingLeft="20px"
-          width="300px"
+          paddingLeft="45px"
+          width="340px"
           alignItems="center"
           justifyContent="center"
         >

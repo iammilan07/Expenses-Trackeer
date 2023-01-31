@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   FormLabel,
   HStack,
   Input,
@@ -52,6 +53,11 @@ const AddForm = () => {
 
   return (
     <Box className="add-from" marginBottom="100px">
+      <Flex p={3} alignItems="center" justifyContent="space-between">
+        <Text fontSize="21px" fontWeight="500" as="b">
+          Add Your Expense..
+        </Text>
+      </Flex>
       <form onSubmit={handleSubmit(onhandleSubmit)}>
         <ToastContainer
           position="bottom-left"
@@ -134,7 +140,12 @@ const AddForm = () => {
                   </HStack>
                   {/* categoryopen */}
                   {categoryOpen && (
-                    <Box className="category-container" width="250px">
+                    <Box
+                      backgroundColor="black"
+                      // position="absolute"
+                      className="category-container"
+                      width="100%"
+                    >
                       {categoryList.map((category: any) => (
                         <Box
                           className="category-item"

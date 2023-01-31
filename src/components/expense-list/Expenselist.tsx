@@ -57,12 +57,20 @@ const Expenselist = () => {
           );
         })
       ) : (
-        <Box marginTop="30vh" marginLeft="5vw" justifyContent="center">
-          <Box display="flex">
-            <Text as="b">Empty Expenses list!!</Text>
-            <ImFilesEmpty />
+        <Box height="200px" paddingTop="90px">
+          <Box justifyContent="center">
+            <Box>
+              <Box fontSize="40px" paddingLeft="160px">
+                <ImFilesEmpty />
+              </Box>
+            </Box>
+            <Text textAlign="center" fontSize="25px" color="rgb(194, 84, 91)">
+              Expense List Empty!!
+            </Text>
           </Box>
-          <Text>Please add some expenses ...</Text>
+          <Text textAlign="center" color="rgb(194, 84, 91)">
+            Please add some expenses ...
+          </Text>
         </Box>
       )}
     </Box>
