@@ -18,13 +18,12 @@ const Footer = () => {
         // paddingLeft="435px"
         bottom="-1"
       >
-        <Box justifyContent="center" alignItems="center">
+        <Box alignItems="center">
           <Box>
             <Tabs
               backgroundColor="white"
-              // justifyContent="center"
-              // alignItems="center"
-              width="30%"
+              alignItems="center"
+              width="347px"
               variant="soft-rounded"
               colorScheme="green"
               display="flex"
