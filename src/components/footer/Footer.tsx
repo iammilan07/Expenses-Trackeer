@@ -7,17 +7,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <Box position="fixed" width="100%" left="0" bottom="-1">
-      <Box
-        // paddingLeft="85px"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Box
-          border="1px solid black"
-          // borderRadius="10px"
-          backgroundColor="white"
-        >
+    <Box position="fixed" left="0" width="100%" paddingLeft="-30px" bottom="-1">
+      <Box justifyContent="center" alignItems="center">
+        <Box border="1px solid black" backgroundColor="white">
           <Tabs
             justifyContent="space-between"
             width="100%"

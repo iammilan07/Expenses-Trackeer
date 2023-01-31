@@ -13,6 +13,7 @@ import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
 import Newexpenselist from "../../components/expense-list/Newexpenselist";
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { ImFilesEmpty } from "react-icons/im";
 
 const Details = () => {
   //state
@@ -50,7 +51,7 @@ const Details = () => {
   };
 
   return (
-    <Box paddingTop="10px" marginBottom="100px">
+    <Box paddingTop="10px" marginBottom="100px" width="100%">
       {/* <pre>{JSON.stringify(data1, null, 2)}</pre> */}
 
       <Link to="/">
@@ -70,69 +71,106 @@ const Details = () => {
           </HStack>
         </Button>
       </Link>
-      <Text textAlign="center">Expenses Details</Text>
+      <Text textAlign="center" fontSize="20px">
+        Your Expense Details!
+      </Text>
       <Box alignItems="center" justifyContent="center">
         <Box marginTop="50px">
-          <PieChart width={400} height={400}>
-            <Legend layout="vertical" verticalAlign="top" align="center" />
-            <Pie
-              data={data}
-              cx={200}
-              cy={200}
-              labelLine={false}
-              label={renderCustomizedLabel}
-              outerRadius={120}
-              fill="#8884d8"
-              dataKey="value"
-            >
-              {list.map((expense: any, index: any) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-          <Text as="b" paddingLeft="100px">
-            Pie-Chart based on expenses.
+          {Object.keys(data).length > 0 ? (
+            <PieChart width={400} height={400}>
+              <Legend layout="vertical" verticalAlign="top" align="center" />
+              <Pie
+                data={data}
+                cx={200}
+                cy={200}
+                labelLine={false}
+                label={renderCustomizedLabel}
+                outerRadius={120}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {list.map((expense: any, index: any) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          ) : (
+            <Box height="200px" paddingTop="100px">
+              <Box display="flex" justifyContent="center">
+                <Text textAlign="center" fontSize="25px" color="red">
+                  PieChart Empty!!
+                </Text>
+                <ImFilesEmpty />
+              </Box>
+              <Text textAlign="center" color="red">
+                Please add some expenses ...
+              </Text>
+            </Box>
+          )}
+
+          <Text as="b" paddingLeft="70px">
+            Chart: Pie-Chart based on expense.
           </Text>
         </Box>
         <Box paddingTop="50px">
-          <PieChart width={400} height={500}>
-            <Legend layout="vertical" verticalAlign="top" align="center" />
-            <Pie
-              data={data2}
-              cx={200}
-              cy={200}
-              labelLine={false}
-              label={renderCustomizedLabel}
-              outerRadius={120}
-              fill="#8884d8"
-              dataKey="value"
-            >
-              {list.map((expense: any, index: any) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-          <Text as="b" paddingLeft="100px">
-            Pie-Chart based on category.
+          {Object.keys(data2).length > 0 ? (
+            <PieChart width={400} height={500}>
+              <Legend layout="vertical" verticalAlign="top" align="center" />
+              <Pie
+                data={data2}
+                cx={200}
+                cy={200}
+                labelLine={false}
+                label={renderCustomizedLabel}
+                outerRadius={120}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {list.map((expense: any, index: any) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          ) : (
+            <Box height="200px" paddingTop="100px">
+              <Box display="flex" justifyContent="center">
+                <Text textAlign="center" fontSize="25px" color="red">
+                  PieChart Empty!!
+                </Text>
+                <ImFilesEmpty />
+              </Box>
+              <Text textAlign="center" color="red">
+                Please add some expenses ...
+              </Text>
+            </Box>
+          )}
+          <Text as="b" paddingLeft="70px">
+            Chart: Pie-Chart based on category.
           </Text>
         </Box>
       </Box>
       <Box
-        className="app"
-        alignItems="center"
-        paddingLeft="20px"
-        marginRight="20px"
+        // className="app"
+
+        marginRight="10px"
         paddingTop="50px"
-        width="300px"
+        // width="300px"
       >
-        <Text className="header">Items According to the date!!</Text>
-        <Box>
+        <Text textAlign="center" className="header">
+          Items According to the date!!
+        </Text>
+        <Box
+          paddingLeft="20px"
+          width="300px"
+          alignItems="center"
+          justifyContent="center"
+        >
           <Calendar onChange={setDate} value={date} />
         </Box>
         <Box className="text-center">

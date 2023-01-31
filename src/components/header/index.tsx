@@ -4,7 +4,7 @@ import { Link, Flex, Heading, Text, Box } from "@chakra-ui/react";
 const Header = () => {
   return (
     <Flex mb={2} p={3} alignItems="center" justifyContent="space-between">
-      <Text fontSize="16px" fontWeight="medium">
+      <Text fontSize="24px" fontWeight="500" as="b">
         My Expense Tracker!!
       </Text>
       <Box display="flex">
